@@ -24,6 +24,12 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
 
+        foreignObject * {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            backface-visibility: hidden;
+        }
+
         .app-container {
             display: grid;
             grid-template-rows: 56px 1fr 6px var(--bottom-height);
@@ -227,11 +233,16 @@
             box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.25), 0 0 12px rgba(13, 110, 253, 0.4) !important;
         }
 
-        .canvas-card.disabled {
+        .canvas-card.disabled,
+        .card-process.disabled,
+        .card-datastore.disabled,
+        .card-interactor.disabled,
+        .card-interactor-privileged.disabled,
+        .card-infrastructure.disabled {
             background-color: #f1f3f5 !important;
             border-color: #ced4da !important;
             color: #6c757d !important;
-            box-shadow: none !important;
+            box-shadow: 0 14px 35px rgba(108, 117, 125, 0.35) !important;
             opacity: 0.65 !important;
         }
 
@@ -314,7 +325,7 @@
 
         .card-infrastructure-borderless {
             background: transparent !important;
-            border: 1.5px dashed transparent !important;
+            border: none !important;
             box-shadow: none !important;
             width: 100%;
             height: 100%;
@@ -328,8 +339,8 @@
         }
 
         .node-element.selected .card-infrastructure-borderless {
-            border-color: #0d6efd !important;
-            box-shadow: none !important;
+            border: 3px solid #0d6efd !important;
+            box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.25), 0 0 12px rgba(13, 110, 253, 0.4) !important;
         }
 
         .node-element.disabled .card-infrastructure-borderless {
@@ -337,7 +348,7 @@
         }
 
         .node-element.selected.disabled .card-infrastructure-borderless {
-            border-color: #ced4da !important;
+            border: none !important;
             box-shadow: none !important;
         }
 
@@ -381,12 +392,13 @@
         }
 
         .card-headline {
-            border: 1px dashed transparent;
+            border: none !important;
             background-color: transparent;
         }
 
         .selected .card-headline {
-            border-color: #0d6efd;
+            border: none !important;
+            box-shadow: none !important;
         }
 
         .card-icon-stripe {
@@ -879,6 +891,315 @@
                 box-shadow: none !important;
             }
         }
+
+        /* Dark Theme Overrides for Canvas */
+        .dark-theme-canvas {
+            --canvas-bg: #1e1e24 !important;
+            background-color: #1e1e24 !important;
+        }
+
+        .dark-theme-canvas #grid-pattern path {
+            stroke: #2d2d3c !important;
+        }
+
+        .dark-theme-canvas .canvas-card {
+            background-color: #2a2a35 !important;
+            color: #e2e8f0 !important;
+            border-color: #4b5563 !important;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4) !important;
+        }
+
+        .dark-theme-canvas .canvas-card .text-dark {
+            color: #f1f5f9 !important;
+        }
+
+        .dark-theme-canvas .canvas-card .text-muted {
+            color: #94a3b8 !important;
+        }
+
+        .dark-theme-canvas .card-process {
+            border-color: #818cf8 !important;
+            background-color: #1e1b4b !important;
+            box-shadow: 0 14px 35px rgba(99, 102, 241, 0.25) !important;
+        }
+
+        .dark-theme-canvas .process-stripe {
+            background-color: rgba(129, 140, 248, 0.15) !important;
+            color: #818cf8 !important;
+        }
+
+        .dark-theme-canvas .card-datastore {
+            border-color: #fbbf24 !important;
+            background-color: #451a03 !important;
+            box-shadow: 0 14px 35px rgba(251, 191, 36, 0.25) !important;
+        }
+
+        .dark-theme-canvas .datastore-stripe {
+            background-color: rgba(251, 191, 36, 0.15) !important;
+            color: #fbbf24 !important;
+        }
+
+        .dark-theme-canvas .card-interactor {
+            border-color: #4ade80 !important;
+            background-color: #064e3b !important;
+            box-shadow: 0 14px 35px rgba(74, 222, 128, 0.25) !important;
+        }
+
+        .dark-theme-canvas .interactor-stripe {
+            background-color: rgba(74, 222, 128, 0.15) !important;
+            color: #4ade80 !important;
+        }
+
+        .dark-theme-canvas .card-infrastructure {
+            border-color: #38bdf8 !important;
+            background-color: #0c4a6e !important;
+            box-shadow: 0 14px 35px rgba(56, 189, 248, 0.25) !important;
+        }
+
+        .dark-theme-canvas .infrastructure-stripe {
+            background-color: rgba(56, 189, 248, 0.15) !important;
+            color: #38bdf8 !important;
+        }
+
+        .dark-theme-canvas .card-interactor-privileged {
+            border-color: #f87171 !important;
+            background-color: #7f1d1d !important;
+            box-shadow: 0 14px 35px rgba(248, 113, 113, 0.25) !important;
+        }
+
+        .dark-theme-canvas .interactor-privileged-stripe {
+            background-color: rgba(248, 113, 113, 0.15) !important;
+            color: #f87171 !important;
+        }
+
+        .dark-theme-canvas .card-textbox {
+            border-color: #4b5563 !important;
+            background-color: #111827 !important;
+            color: #f3f4f6 !important;
+        }
+
+        .dark-theme-canvas .card-textbox * {
+            color: #f3f4f6 !important;
+        }
+
+        .dark-theme-canvas .card-headline div {
+            color: #f9fafb !important;
+        }
+
+        .dark-theme-canvas .card-infrastructure-borderless {
+            background-color: transparent !important;
+            box-shadow: none !important;
+        }
+
+        .dark-theme-canvas .node-element.selected .card-infrastructure-borderless {
+            box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.25), 0 0 12px rgba(13, 110, 253, 0.4) !important;
+        }
+
+        .dark-theme-canvas .card-infrastructure-borderless .card-text-render-target {
+            color: #f1f5f9 !important;
+        }
+
+        .dark-theme-canvas .node-element.disabled .card-infrastructure-borderless .card-text-render-target {
+            color: #6b7280 !important;
+        }
+
+        .dark-theme-canvas .card-headline {
+            background-color: transparent !important;
+            box-shadow: none !important;
+        }
+
+        .dark-theme-canvas .canvas-card.disabled,
+        .dark-theme-canvas .card-process.disabled,
+        .dark-theme-canvas .card-datastore.disabled,
+        .dark-theme-canvas .card-interactor.disabled,
+        .dark-theme-canvas .card-interactor-privileged.disabled,
+        .dark-theme-canvas .card-infrastructure.disabled {
+            background-color: #1a1a24 !important;
+            border-color: #374151 !important;
+            color: #6b7280 !important;
+            box-shadow: 0 14px 35px rgba(55, 65, 81, 0.5) !important;
+        }
+
+        .dark-theme-canvas .canvas-card.disabled * {
+            color: #6b7280 !important;
+        }
+
+        .dark-theme-canvas foreignObject .bg-white {
+            background-color: #25252f !important;
+        }
+
+        .dark-theme-canvas foreignObject .text-dark {
+            color: #e2e8f0 !important;
+        }
+
+        .dark-theme-canvas foreignObject .text-muted {
+            color: #94a3b8 !important;
+        }
+
+        .dark-theme-canvas foreignObject .bg-danger {
+            background-color: #3f1d24 !important;
+        }
+
+        .dark-theme-canvas foreignObject .threat-bug-badge {
+            background-color: #ff4d4d !important;
+        }
+
+        .dark-theme-canvas foreignObject .text-white {
+            color: #f8fafc !important;
+        }
+
+        .dark-theme-canvas foreignObject .bg-light {
+            background-color: #1a1a24 !important;
+        }
+
+        .dark-theme-canvas text {
+            fill: #cbd5e1 !important;
+        }
+
+        .dark-theme-canvas text[fill="#b70918"] {
+            fill: #ff8787 !important;
+        }
+
+        .dark-theme-canvas path.flow-line[stroke="#212529"] {
+            stroke: #f8fafc !important;
+        }
+
+        .dark-theme-canvas marker#arrowhead-black polygon {
+            fill: #f8fafc !important;
+        }
+
+        .dark-theme-canvas marker#arrowhead-black-reverse polygon {
+            fill: #f8fafc !important;
+        }
+
+        .dark-theme-canvas path.flow-line[stroke="#e63946"] {
+            stroke: #ff6b6b !important;
+        }
+
+        .dark-theme-canvas marker#arrowhead-red polygon {
+            fill: #ff6b6b !important;
+        }
+
+        .dark-theme-canvas marker#arrowhead-red-reverse polygon {
+            fill: #ff6b6b !important;
+        }
+
+        .dark-theme-canvas path.flow-line[stroke="#0d6efd"] {
+            stroke: #38bdf8 !important;
+        }
+
+        .dark-theme-canvas marker#arrowhead-selected polygon {
+            fill: #38bdf8 !important;
+        }
+
+        .dark-theme-canvas marker#arrowhead-selected-reverse polygon {
+            fill: #38bdf8 !important;
+        }
+
+        .dark-theme-canvas path[stroke="#dc3545"] {
+            stroke: #ff6b6b !important;
+        }
+
+        .dark-theme-canvas path[stroke="#6c757d"] {
+            stroke: #4b5563 !important;
+        }
+
+        /* Swimlane Custom CSS rules */
+        .swimlane-bg {
+            fill: rgba(235, 240, 248, 0.55);
+            stroke: #cbd5e1;
+            stroke-width: 1.5px;
+            transition: fill 0.15s, stroke 0.15s;
+        }
+
+        .swimlane-title-bg {
+            fill: #475569;
+            transition: fill 0.15s;
+        }
+
+        .swimlane-col-header-bg {
+            fill: #94a3b8;
+            transition: fill 0.15s;
+        }
+
+        .swimlane-row-header-bg {
+            fill: #f1f5f9;
+            transition: fill 0.15s;
+        }
+
+        .swimlane-grid-line {
+            stroke: #cbd5e1;
+            stroke-width: 1px;
+            transition: stroke 0.15s;
+        }
+
+        .swimlane-border-line {
+            stroke: #94a3b8;
+            stroke-width: 1.5px;
+            transition: stroke 0.15s;
+        }
+
+        .swimlane-title-text {
+            fill: #ffffff;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .swimlane-col-text {
+            fill: #ffffff;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+        }
+
+        .swimlane-row-text {
+            fill: #475569;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            transition: fill 0.15s;
+        }
+
+        .node-element.selected .swimlane-bg {
+            stroke: #0d6efd !important;
+            stroke-width: 4px !important;
+            filter: drop-shadow(0px 0px 8px rgba(13, 110, 253, 0.5));
+        }
+
+        /* Dark theme overrides */
+        .dark-theme-canvas .swimlane-bg {
+            fill: rgba(30, 30, 42, 0.6) !important;
+            stroke: #475569 !important;
+        }
+
+        .dark-theme-canvas .node-element.selected .swimlane-bg {
+            stroke: #0d6efd !important;
+        }
+
+        .dark-theme-canvas .swimlane-title-bg {
+            fill: #1e293b !important;
+        }
+
+        .dark-theme-canvas .swimlane-col-header-bg {
+            fill: #334155 !important;
+        }
+
+        .dark-theme-canvas .swimlane-row-header-bg {
+            fill: #0f172a !important;
+        }
+
+        .dark-theme-canvas .swimlane-grid-line {
+            stroke: #475569 !important;
+        }
+
+        .dark-theme-canvas .swimlane-border-line {
+            stroke: #334155 !important;
+        }
+
+        .dark-theme-canvas .swimlane-row-text {
+            fill: #94a3b8 !important;
+        }
     </style>
 </head>
 
@@ -907,6 +1228,8 @@
                         class="bi bi-file-earmark-arrow-up me-1"></i>Import JSON</button>
                 <button class="btn btn-sm btn-outline-light" id="btn-export"><i
                         class="bi bi-file-earmark-arrow-down me-1"></i>Export JSON</button>
+                <button class="btn btn-sm btn-outline-danger" id="btn-reset-session"><i
+                        class="bi bi-trash me-1"></i>Reset Canvas</button>
                 <button class="btn btn-sm btn-primary" id="btn-help-trigger"><i
                         class="bi bi-question-circle me-1"></i>Help &amp; License</button>
             </div>
@@ -1059,6 +1382,42 @@
                     </div>
 
                     <div class="palette-item-container">
+                        <div class="palette-item p-2 rounded bg-light d-flex align-items-center"
+                            data-type="custom_image" id="pal-custom-image">
+                            <i class="bi bi-image-fill text-danger fs-5 me-3"></i>
+                            <div>
+                                <div class="fw-semibold small">Custom Image / Icon</div>
+                            </div>
+                        </div>
+                        <div class="palette-popover-panel">
+                            <div class="popover-header-title text-danger"><i class="bi bi-image-fill"></i> Custom
+                                Graphic Image</div>
+                            <div class="small fw-bold text-white-50 mb-1">Functional Definition:</div>
+                            <div class="small text-light opacity-75 mb-2">Allows importing custom graphic elements,
+                                system logos, or specific icons directly onto the diagram. Supports loading local files
+                                or web URLs.</div>
+                        </div>
+                    </div>
+
+                    <div class="palette-item-container">
+                        <div class="palette-item p-2 rounded bg-light d-flex align-items-center" data-type="swimlane"
+                            id="pal-swimlane">
+                            <i class="bi bi-grid-3x3-gap text-success fs-5 me-3"></i>
+                            <div>
+                                <div class="fw-semibold small">Swimlane Grid Layout</div>
+                            </div>
+                        </div>
+                        <div class="palette-popover-panel">
+                            <div class="popover-header-title text-success"><i class="bi bi-grid-3x3-gap"></i> Swimlane
+                                Grid Layout</div>
+                            <div class="small fw-bold text-white-50 mb-1">Functional Definition:</div>
+                            <div class="small text-light opacity-75 mb-2">A dynamic matrix grid component that
+                                automatically groups, bounds, and resizes relative to elements placed inside its cells.
+                                Supports adding/deleting rows and columns.</div>
+                        </div>
+                    </div>
+
+                    <div class="palette-item-container">
                         <div class="palette-item p-2 rounded bg-light d-flex align-items-center" data-type="headline"
                             id="pal-headline">
                             <i class="bi bi-type-h1 text-dark fs-5 me-3"></i>
@@ -1150,20 +1509,23 @@
                 </defs>
 
                 <g id="canvas-transform-group">
-                    <rect width="24000" height="24000" class="canvas-grid" id="canvas-grid-rect" x="-12000" y="-12000"
-                        style="pointer-events: all;" />
-                    <g id="layers-boundaries-group"></g>
-                    <g id="layers-boundary-lines-paths-group"></g>
-                    <g id="layers-flows-paths-group"></g>
-                    <g id="layers-flows-texts-group"></g>
-                    <g id="layers-boundary-lines-texts-group"></g>
-                    <g id="layers-nodes-group"></g>
-                    <g id="layers-interactive-handles-group"></g>
+                    <g id="isometric-wrapper" transform="matrix(0.8660254, 0.5, -0.8660254, 0.5, 0, 0)">
+                        <rect width="24000" height="24000" class="canvas-grid" id="canvas-grid-rect" x="-12000"
+                            y="-12000" style="pointer-events: all;" />
+                        <g id="layers-swimlanes-group"></g>
+                        <g id="layers-boundaries-group"></g>
+                        <g id="layers-boundary-lines-paths-group"></g>
+                        <g id="layers-flows-paths-group"></g>
+                        <g id="layers-flows-texts-group"></g>
+                        <g id="layers-boundary-lines-texts-group"></g>
+                        <g id="layers-nodes-group"></g>
+                        <g id="layers-interactive-handles-group"></g>
 
-                    <path id="interactive-phantom-wire" fill="none" stroke="#0d6efd" stroke-width="2"
-                        stroke-dasharray="4,4" visibility="hidden" style="pointer-events:none;" />
-                    <rect id="selection-marquee" fill="rgba(13, 110, 253, 0.08)" stroke="#0d6efd" stroke-width="1.5"
-                        stroke-dasharray="3,3" visibility="hidden" style="pointer-events: none;" />
+                        <path id="interactive-phantom-wire" fill="none" stroke="#0d6efd" stroke-width="2"
+                            stroke-dasharray="4,4" visibility="hidden" style="pointer-events:none;" />
+                        <rect id="selection-marquee" fill="rgba(13, 110, 253, 0.08)" stroke="#0d6efd" stroke-width="1.5"
+                            stroke-dasharray="3,3" visibility="hidden" style="pointer-events: none;" />
+                    </g>
                 </g>
             </svg>
 
@@ -1181,6 +1543,49 @@
                         class="bi bi-fullscreen"></i></button>
                 <button class="btn btn-sm btn-light border-0 text-success" id="btn-canvas-print"
                     title="Print/Export Canvas"><i class="bi bi-printer"></i></button>
+                <div class="dropdown d-inline-block">
+                    <button class="btn btn-sm btn-light border-0 text-primary dropdown-toggle" type="button"
+                        id="btn-canvas-view-dropdown" data-bs-toggle="dropdown" aria-expanded="false"
+                        title="Change Canvas View Mode">
+                        <i class="bi bi-box"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="btn-canvas-view-dropdown"
+                        style="font-size: 11px;">
+                        <li><a class="dropdown-item active" href="#" id="opt-view-ne-iso"><i
+                                    class="bi bi-box me-2"></i>NE Isometric View</a></li>
+                        <li><a class="dropdown-item" href="#" id="opt-view-nw-iso"><i class="bi bi-box-seam me-2"></i>NW
+                                Isometric View</a></li>
+                        <li><a class="dropdown-item" href="#" id="opt-view-flat"><i class="bi bi-square me-2"></i>2D
+                                Flat View</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown d-inline-block">
+                    <button class="btn btn-sm btn-light border-0 text-secondary dropdown-toggle" type="button"
+                        id="btn-canvas-grid-dropdown" data-bs-toggle="dropdown" aria-expanded="false"
+                        title="Grid Settings">
+                        <i class="bi bi-grid-3x3"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="btn-canvas-grid-dropdown"
+                        style="font-size: 11px; min-width: 150px;">
+                        <li class="dropdown-header fw-bold text-muted"
+                            style="font-size: 9px; text-transform: uppercase;">Grid Size</li>
+                        <li><a class="dropdown-item" href="#" id="opt-grid-size-10">10px (Small)</a></li>
+                        <li><a class="dropdown-item active" href="#" id="opt-grid-size-20">20px (Default)</a></li>
+                        <li><a class="dropdown-item" href="#" id="opt-grid-size-40">40px (Large)</a></li>
+                        <li><a class="dropdown-item" href="#" id="opt-grid-size-80">80px (Extra Large)</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li class="dropdown-header fw-bold text-muted"
+                            style="font-size: 9px; text-transform: uppercase;">Snapping</li>
+                        <li><a class="dropdown-item active" href="#" id="opt-grid-snap-toggle"><i
+                                    class="bi bi-check-lg me-1"></i>Snap to Grid</a></li>
+                    </ul>
+                </div>
+                <button class="btn btn-sm btn-light border-0 text-secondary" id="btn-canvas-theme"
+                    title="Toggle Canvas Dark Mode">
+                    <i class="bi bi-moon-stars"></i>
+                </button>
                 <span class="align-self-center px-2 text-muted small" id="lbl-canvas-zoom">100%</span>
             </div>
         </main>
@@ -1198,7 +1603,7 @@
                 </li>
                 <li class="nav-item">
                     <button class="nav-link py-2 small fw-semibold" id="tab-suggest-trigger" data-bs-toggle="tab"
-                        data-bs-target="#tab-panel-suggest" type="button">STRIDE Wizard</button>
+                        data-bs-target="#tab-panel-suggest" type="button">Threat Templates</button>
                 </li>
             </ul>
 
@@ -1321,6 +1726,56 @@
                                     <label class="form-check-label extra-small text-dark fw-bold"
                                         for="props-flow-dashed-switch">Dashed Line Communication Track</label>
                                 </div>
+                                <div class="mb-2 mt-2">
+                                    <label class="extra-small text-muted fw-bold mb-1">Line Thickness</label>
+                                    <select class="form-select form-select-sm shadow-none"
+                                        id="props-flow-thickness-select">
+                                        <option value="1">1px - Thin Line</option>
+                                        <option value="2">2px - Standard Line</option>
+                                        <option value="3">3px - Medium Line</option>
+                                        <option value="4">4px - Thick Line</option>
+                                    </select>
+                                </div>
+                                <div class="mb-0">
+                                    <label class="extra-small text-muted fw-bold mb-1"><i
+                                            class="bi bi-palette me-1"></i>Line Display Color</label>
+                                    <div class="d-flex flex-wrap gap-2 justify-content-between p-1 bg-white border rounded"
+                                        id="props-flow-color-grid"
+                                        style="display: grid !important; grid-template-columns: repeat(4, 1fr); gap: 8px; justify-items: center; align-items: center;">
+                                        <button type="button" class="color-swatch-btn" data-color="blue"
+                                            style="background-color: #0d6efd;" title="Blue"></button>
+                                        <button type="button" class="color-swatch-btn" data-color="silver"
+                                            style="background-color: #cbd5e1;" title="Silver"></button>
+                                        <button type="button" class="color-swatch-btn" data-color="purple"
+                                            style="background-color: #6f42c1;" title="Purple"></button>
+                                        <button type="button" class="color-swatch-btn" data-color="pink"
+                                            style="background-color: #d63384;" title="Pink"></button>
+                                        <button type="button" class="color-swatch-btn" data-color="red"
+                                            style="background-color: #dc3545;" title="Red"></button>
+                                        <button type="button" class="color-swatch-btn" data-color="orange"
+                                            style="background-color: #fd7e14;" title="Orange"></button>
+                                        <button type="button" class="color-swatch-btn" data-color="yellow"
+                                            style="background-color: #ffc107;" title="Yellow"></button>
+                                        <button type="button" class="color-swatch-btn" data-color="green"
+                                            style="background-color: #198754;" title="Green"></button>
+                                        <button type="button" class="color-swatch-btn" data-color="teal"
+                                            style="background-color: #20c997;" title="Teal"></button>
+                                        <button type="button" class="color-swatch-btn" data-color="cyan"
+                                            style="background-color: #0dcaf0;" title="Cyan"></button>
+                                        <button type="button" class="color-swatch-btn" data-color="lime"
+                                            style="background-color: #84cc16;" title="Lime"></button>
+                                        <button type="button" class="color-swatch-btn" data-color="emerald"
+                                            style="background-color: #10b981;" title="Emerald"></button>
+                                        <button type="button" class="color-swatch-btn" data-color="slate"
+                                            style="background-color: #64748b;" title="Slate"></button>
+                                        <button type="button" class="color-swatch-btn" data-color="brown"
+                                            style="background-color: #78350f;" title="Brown"></button>
+                                        <button type="button" class="color-swatch-btn" data-color="navy"
+                                            style="background-color: #1e3a8a;" title="Navy"></button>
+                                        <button type="button" class="color-swatch-btn" data-color="black"
+                                            style="background-color: #212529;" title="Black"></button>
+                                    </div>
+                                </div>
                             </div>
 
                             <div id="box-props-step-activity" class="card card-body p-2 bg-light border d-none">
@@ -1432,6 +1887,70 @@
                                 </div>
                             </div>
 
+                            <div id="box-props-custom-image" class="d-none border rounded p-2 bg-light">
+                                <h6 class="small fw-bold border-bottom pb-1 text-dark mb-2"><i
+                                        class="bi bi-image me-1 text-primary"></i>Custom Graphic Source</h6>
+                                <div class="mb-2">
+                                    <label class="extra-small text-muted fw-bold mb-1">Image URL / Path</label>
+                                    <input type="text" class="form-control form-control-sm shadow-none"
+                                        id="props-input-image-url" placeholder="https://example.com/logo.png">
+                                </div>
+                                <div class="mb-0">
+                                    <label class="extra-small text-muted fw-bold mb-1">Or Upload Local Image</label>
+                                    <input type="file" class="form-control form-control-sm shadow-none"
+                                        id="props-input-image-file" accept="image/*">
+                                </div>
+                            </div>
+
+                            <div id="box-props-swimlane" class="card card-body p-2 bg-light border d-none">
+                                <h6 class="small fw-bold text-dark border-bottom pb-1 mb-2">
+                                    <i class="bi bi-grid-3x3-gap me-1 text-primary"></i>Swimlane Configuration
+                                </h6>
+                                <div class="mb-2">
+                                    <label class="extra-small text-muted fw-bold mb-1">Swimlane Headline</label>
+                                    <input type="text" class="form-control form-control-sm shadow-none"
+                                        id="props-swimlane-headline" placeholder="Swimlane Headline">
+                                </div>
+                                <div class="mb-2">
+                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                        <label class="extra-small text-muted fw-bold mb-0">Columns</label>
+                                        <button type="button"
+                                            class="btn btn-xs btn-outline-primary py-0 px-1 extra-small"
+                                            id="props-swimlane-add-col" style="font-size: 10px;">
+                                            <i class="bi bi-plus-lg"></i> Add Col
+                                        </button>
+                                    </div>
+                                    <div id="props-swimlane-cols-list" class="d-flex flex-column gap-1 overflow-y-auto"
+                                        style="max-height: 120px;">
+                                        <!-- columns dynamic list with rename and delete buttons -->
+                                    </div>
+                                </div>
+                                <div class="mb-0">
+                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                        <label class="extra-small text-muted fw-bold mb-0">Rows</label>
+                                        <button type="button"
+                                            class="btn btn-xs btn-outline-primary py-0 px-1 extra-small"
+                                            id="props-swimlane-add-row" style="font-size: 10px;">
+                                            <i class="bi bi-plus-lg"></i> Add Row
+                                        </button>
+                                    </div>
+                                    <div id="props-swimlane-rows-list" class="d-flex flex-column gap-1 overflow-y-auto"
+                                        style="max-height: 120px;">
+                                        <!-- rows dynamic list with rename and delete buttons -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="box-props-isometric-toggle" class="card card-body p-2 bg-light border d-none">
+                                <h6 class="small fw-bold text-dark border-bottom pb-1 mb-2"><i
+                                        class="bi bi-box me-1 text-primary"></i>Isometric Projection</h6>
+                                <div class="form-check form-switch mt-1">
+                                    <input class="form-check-input" type="checkbox" id="props-input-disable-iso">
+                                    <label class="form-check-label extra-small text-dark fw-bold"
+                                        for="props-input-disable-iso">Disable Isometric Projection</label>
+                                </div>
+                            </div>
+
                             <div id="box-props-notes">
                                 <label class="form-label small fw-semibold text-muted mb-1">Architectural Scope
                                     Notes</label>
@@ -1445,30 +1964,80 @@
                                 </h6>
                                 <div id="security-props-container" class="d-flex flex-column gap-2 small"></div>
                             </div>
+
+                            <div id="box-props-threats" class="border rounded p-2 bg-light d-none">
+                                <h6 class="small fw-bold border-bottom pb-1 text-dark mb-2"><i
+                                        class="bi bi-shield-exclamation me-1 text-danger"></i>Associated Threats</h6>
+                                <div id="props-threats-container" class="d-flex flex-column gap-2 small"></div>
+                            </div>
                         </form>
                     </div>
                 </div>
 
                 <div class="tab-pane fade h-100 tab-scrollable p-3" id="tab-panel-suggest">
+                    <!-- Template Actions Toolbar -->
+                    <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
+                        <span class="small fw-semibold text-muted">Threat Templates:</span>
+                        <div class="d-flex gap-1">
+                            <button type="button" class="btn btn-xs btn-outline-secondary py-1 px-2"
+                                style="font-size: 11px;" id="btn-import-templates" title="Import Templates JSON Backup">
+                                <i class="bi bi-file-earmark-arrow-up"></i> Load
+                            </button>
+                            <button type="button" class="btn btn-xs btn-outline-secondary py-1 px-2"
+                                style="font-size: 11px;" id="btn-export-templates" title="Export Templates JSON Backup">
+                                <i class="bi bi-file-earmark-arrow-down"></i> Save
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Template Sorting Select -->
+                    <div
+                        class="d-flex align-items-center gap-2 justify-content-between mb-3 bg-light p-2 rounded border">
+                        <span class="extra-small fw-semibold text-muted" style="font-size: 11px;"><i
+                                class="bi bi-sort-alpha-down me-1"></i>Sort Templates</span>
+                        <select id="select-templates-sort" class="form-select form-select-sm py-0 px-2 shadow-none"
+                            style="width: 160px; font-size: 11px; height: 24px;">
+                            <option value="group-category-title">STRIDE &amp; Title</option>
+                            <option value="title-asc">Title (A-Z)</option>
+                            <option value="title-desc">Title (Z-A)</option>
+                            <option value="category-asc">Category (A-Z)</option>
+                        </select>
+                    </div>
+
+                    <!-- Alert for missing threat_templates.json -->
+                    <div class="alert alert-warning p-2 mb-3 d-none" id="alert-templates-missing"
+                        style="font-size: 11px; line-height: 1.4;">
+                        <div class="fw-bold mb-1 text-dark"><i class="bi bi-exclamation-triangle-fill me-1"></i>
+                            threat_templates.json not detected</div>
+                        The threat_templates.json file was not found. You can either load a template backup file or
+                        start creating new items.
+                    </div>
+
                     <div id="suggest-view-empty" class="text-center text-muted my-5">
                         <i class="bi bi-magic display-6 mb-2"></i>
-                        <p class="small">Select a process, data store, or communication track to populate STRIDE
-                            suggests records matrix values.</p>
+                        <p class="small">Select a process, data store, communication track, or infrastructure component
+                            to view Threat Templates.</p>
                     </div>
 
                     <div id="suggest-view-content" class="d-none">
                         <div class="card mb-3 border-primary bg-light">
                             <div class="card-body p-2">
                                 <div class="small fw-bold mb-1 text-primary"><i
-                                        class="bi bi-funnel-fill me-1"></i>STRIDE Constraints Target Index</div>
-                                <div class="extra-small text-muted mb-2">Click categories to toggle filters visibility
-                                    logs: <strong id="lbl-matrix-element-type" class="text-dark">NODE</strong></div>
+                                        class="bi bi-funnel-fill me-1"></i>Category Filters</div>
+                                <div class="extra-small text-muted mb-2">Click categories to toggle template filters:
+                                    <strong id="lbl-matrix-element-type" class="text-dark">NODE</strong></div>
                                 <div class="d-flex flex-wrap gap-1" id="box-stride-applicable-badges"></div>
                             </div>
                         </div>
-                        <h6 class="fw-bold text-dark small mb-2"><i
-                                class="bi bi-lightning-charge text-warning me-1"></i>Vulnerability Profile Suggestions
-                        </h6>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h6 class="fw-bold text-dark small mb-0"><i
+                                    class="bi bi-lightning-charge text-warning me-1"></i>Threat Templates
+                            </h6>
+                            <button type="button" class="btn btn-xs btn-primary py-0 px-2 small" id="btn-add-template"
+                                style="font-size: 11px;">
+                                <i class="bi bi-plus-lg"></i> Add
+                            </button>
+                        </div>
                         <div class="d-flex flex-column gap-2" id="box-threat-suggestions-list"></div>
                     </div>
                 </div>
@@ -1651,6 +2220,62 @@
         </div>
     </div>
 
+    <!-- Threat Template Edit/Add Modal -->
+    <div class="modal fade" id="modal-edit-template" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content shadow-lg border-0">
+                <div class="modal-header bg-dark text-light">
+                    <h5 class="modal-title fs-6 fw-bold" id="modal-template-title-lbl"><i
+                            class="bi bi-file-earmark-plus text-warning me-2"></i>Configure Threat Template</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form id="form-modal-template-editor">
+                        <input type="hidden" id="modal-template-hidden-index">
+                        <input type="hidden" id="modal-template-hidden-type">
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-8">
+                                <label class="form-label small fw-semibold text-muted mb-1">Threat Template
+                                    Title</label>
+                                <input type="text" class="form-control shadow-none" id="modal-template-title" required
+                                    placeholder="e.g. Service Identity Mimicry targeting [name]">
+                                <div class="form-text extra-small text-muted">Use <code>[name]</code> to dynamically
+                                    insert the component's name.</div>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label small fw-semibold text-muted mb-1">STRIDE Category</label>
+                                <select class="form-select shadow-none" id="modal-template-category" required>
+                                    <option value="Spoofing">Spoofing (Authentication)</option>
+                                    <option value="Tampering">Tampering (Integrity)</option>
+                                    <option value="Repudiation">Repudiation (Non-repudiation)</option>
+                                    <option value="Information Disclosure">Information Disclosure (Confidentiality)
+                                    </option>
+                                    <option value="Denial of Service">Denial of Service (Availability)</option>
+                                    <option value="Elevation of Privilege">Elevation of Privilege (Authorization)
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row g-3 mb-0">
+                            <div class="col-md-12">
+                                <label class="form-label small fw-semibold text-muted mb-1">Detailed Technical
+                                    Description</label>
+                                <textarea class="form-control shadow-none" id="modal-template-desc" rows="4"
+                                    required></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer bg-light">
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary btn-sm" id="btn-modal-template-save">Save
+                        Template</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade" id="modal-session-context" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-md modal-dialog-centered">
             <div class="modal-content shadow-lg border-0">
@@ -1741,7 +2366,10 @@
                         DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
                         OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.<br><br>
                         <b>FEEDBACK &amp; SUPPORT:</b><br>
-                        For bug reports, feature requests, or any other feedback, please visit the project's GitHub page at <a href="https://github.com/jozeta/threat-tiger" target="_blank">https://github.com/jozeta/threat-tiger</a> or contact the developer via email at <a href="mailto:johan.zetterstrom@protonmail.com">johan.zetterstrom@protonmail.com</a>.
+                        For bug reports, feature requests, or any other feedback, please visit the project's GitHub page
+                        at <a href="https://github.com/jozeta/threat-tiger"
+                            target="_blank">https://github.com/jozeta/threat-tiger</a> or contact the developer via
+                        email at <a href="mailto:johan.zetterstrom@protonmail.com">johan.zetterstrom@protonmail.com</a>.
                     </div>
                 </div>
                 <div class="modal-footer bg-light">
@@ -1808,6 +2436,7 @@
                     container: document.getElementById('main-layout-container'),
                     svg: document.getElementById('canvas-svg'),
                     transformGroup: document.getElementById('canvas-transform-group'),
+                    layerSwimlanes: document.getElementById('layers-swimlanes-group'),
                     layerBoundaries: document.getElementById('layers-boundaries-group'),
                     layerBoundaryLinesPaths: document.getElementById('layers-boundary-lines-paths-group'),
                     layerFlowsPaths: document.getElementById('layers-flows-paths-group'),
@@ -1842,15 +2471,41 @@
                 this.isBottomCollapsed = false;
                 this.preCollapseBottomHeight = '260px';
                 this.currentMouseCanvasCoords = null;
+                this.threatSuggestions = this.getDefaultThreatSuggestions();
+                this.templatesFileMissing = false;
+                this.isCanvasUnsaved = false;
+                const savedViewMode = localStorage.getItem('canvas_view_mode');
+                if (savedViewMode) {
+                    this.viewMode = savedViewMode;
+                } else {
+                    const savedView = localStorage.getItem('canvas_is_isometric');
+                    this.viewMode = (savedView === 'true') ? 'ne-isometric' : 'flat';
+                }
+                this.isIsometric = this.viewMode !== 'flat';
+
+                const savedTheme = localStorage.getItem('canvas_theme');
+                this.canvasTheme = savedTheme === 'dark' ? 'dark' : 'light';
+
+                const savedGridSize = localStorage.getItem('canvas_grid_size');
+                this.gridSize = savedGridSize ? parseInt(savedGridSize, 10) : 20;
+
+                const savedSnapping = localStorage.getItem('canvas_grid_snapping');
+                this.isSnappingActive = savedSnapping === null ? true : savedSnapping === 'true';
             }
 
             init() {
                 this.editThreatModal = bootstrap.Modal.getOrCreateInstance(document.getElementById('modal-edit-threat'));
                 this.sessionMetaModal = bootstrap.Modal.getOrCreateInstance(document.getElementById('modal-session-context'));
                 this.helpModal = bootstrap.Modal.getOrCreateInstance(document.getElementById('modal-help'));
+                this.templateModal = bootstrap.Modal.getOrCreateInstance(document.getElementById('modal-edit-template'));
 
                 this.bindUiEvents(); this.bindCanvasEvents(); this.bindKeyboardShortcuts();
                 this.bindWindowResizerEvents(); this.bindPrintScalingEngine();
+
+                this.loadThreatTemplates();
+                this.applyViewMode();
+                this.applyCanvasTheme();
+                this.updateGridSettingsUiAndPattern();
 
                 if (!this.loadSessionFromLocalStorage() || this.state.elements.length === 0) {
                     this.state = new ThreatModelSession();
@@ -1866,6 +2521,22 @@
                     this.assertValidOperatorProfileAuthentication();
                 }
                 this.refreshAppViewVisualWorkspace();
+                this.isCanvasUnsaved = false;
+                this.bindBeforeUnloadEvent();
+            }
+
+            bindBeforeUnloadEvent() {
+                window.addEventListener('beforeunload', (event) => {
+                    const hasUnsavedTemplates = Object.keys(this.threatSuggestions).some(type =>
+                        Array.isArray(this.threatSuggestions[type]) && this.threatSuggestions[type].some(t => t.isUnsaved)
+                    ) || (localStorage.getItem('stride_workbench_templates_deleted_unsaved') === 'true');
+
+                    if (this.isCanvasUnsaved || hasUnsavedTemplates) {
+                        event.preventDefault();
+                        event.returnValue = '';
+                        return '';
+                    }
+                });
             }
 
             addOperatorToParticipantsIfNeeded(operatorName) {
@@ -1883,9 +2554,39 @@
                 }
             }
 
+            projectCoordinates(x, y) {
+                if (this.viewMode === 'ne-isometric') {
+                    return {
+                        x: 0.8660254 * (x - y),
+                        y: 0.5 * (x + y)
+                    };
+                } else if (this.viewMode === 'nw-isometric') {
+                    return {
+                        x: 0.8660254 * (x + y),
+                        y: 0.5 * (y - x)
+                    };
+                } else {
+                    return { x, y };
+                }
+            }
+
             getAnchorCoordinates(el, anchorId) {
-                const w = el.width || 240;
-                const h = el.height || 80;
+                let w = el.width || 240;
+                let h = el.height || 80;
+                if (el.type === 'step_activity') {
+                    w = el.width || 260;
+                    h = el.height || 50;
+                } else if (el.type === 'infrastructure') {
+                    w = el.width || 80;
+                    h = el.height || 70;
+                } else if (el.type === 'boundary') {
+                    w = el.width || 320;
+                    h = el.height || 240;
+                } else if (el.type === 'custom_image') {
+                    w = el.width || 120;
+                    h = el.height || 120;
+                }
+
                 let rx = 0.5;
                 let ry = 0.5;
                 if (!anchorId) anchorId = 'right-2';
@@ -1907,7 +2608,215 @@
                     const idx = parseInt(anchorId.split('-')[1]) || 2;
                     ry = idx === 1 ? 0.25 : (idx === 2 ? 0.5 : 0.75);
                 }
-                return { x: el.x + rx * w, y: el.y + ry * h };
+
+                const dx = rx * w;
+                const dy = ry * h;
+
+                if (this.isIsometric && el.disableIso && ['textbox', 'headline', 'custom_image', 'step_activity'].includes(el.type)) {
+                    let ux = dx;
+                    let uy = dy;
+                    if (this.viewMode === 'ne-isometric') {
+                        ux = 0.57735027 * dx + 1.0 * dy;
+                        uy = -0.57735027 * dx + 1.0 * dy;
+                    } else if (this.viewMode === 'nw-isometric') {
+                        ux = 0.57735027 * dx - 1.0 * dy;
+                        uy = 0.57735027 * dx + 1.0 * dy;
+                    }
+                    return { x: this.snapValue(el.x + ux), y: this.snapValue(el.y + uy) };
+                }
+
+                return { x: this.snapValue(el.x + dx), y: this.snapValue(el.y + dy) };
+            }
+
+            isPointInsideElement(el, canvasSpaceCoords) {
+                let w = el.width || 240;
+                let h = el.height || 80;
+                if (el.type === 'step_activity') {
+                    w = el.width || 260;
+                    h = el.height || 50;
+                } else if (el.type === 'infrastructure') {
+                    w = el.width || 80;
+                    h = el.height || 70;
+                } else if (el.type === 'boundary') {
+                    w = el.width || 320;
+                    h = el.height || 240;
+                } else if (el.type === 'custom_image') {
+                    w = el.width || 120;
+                    h = el.height || 120;
+                }
+
+                if (this.isIsometric && el.disableIso && ['textbox', 'headline', 'custom_image', 'step_activity'].includes(el.type)) {
+                    const projNode = this.projectCoordinates(el.x, el.y);
+                    const projPt = this.projectCoordinates(canvasSpaceCoords.x, canvasSpaceCoords.y);
+                    return (projPt.x >= projNode.x && projPt.x <= projNode.x + w &&
+                        projPt.y >= projNode.y && projPt.y <= projNode.y + h);
+                } else {
+                    return (canvasSpaceCoords.x >= el.x && canvasSpaceCoords.x <= el.x + w &&
+                        canvasSpaceCoords.y >= el.y && canvasSpaceCoords.y <= el.y + h);
+                }
+            }
+
+            getIsometricBoundingBox() {
+                if (!this.state.elements || this.state.elements.length === 0) {
+                    return { minX: 0, minY: 0, maxX: 100, maxY: 100 };
+                }
+                let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+
+                const project = (x, y) => {
+                    return this.projectCoordinates(x, y);
+                };
+
+                const addPoint = (x, y) => {
+                    const pt = project(x, y);
+                    if (pt.x < minX) minX = pt.x;
+                    if (pt.x > maxX) maxX = pt.x;
+                    if (pt.y < minY) minY = pt.y;
+                    if (pt.y > maxY) maxY = pt.y;
+                };
+
+                this.state.elements.forEach(el => {
+                    if (el.type === 'boundary_line') {
+                        addPoint(el.x, el.y);
+                        addPoint(el.x2, el.y2);
+                        if ((el.bendX || 0) !== 0 || (el.bendY || 0) !== 0) {
+                            const baseMidX = (el.x + el.x2) / 2;
+                            const baseMidY = (el.y + el.y2) / 2;
+                            addPoint(baseMidX + el.bendX, baseMidY + el.bendY);
+                        }
+                    } else {
+                        let w = el.width || (el.type === 'step_activity' ? 260 : 240);
+                        let h = el.height || (el.type === 'step_activity' ? 50 : 80);
+                        if (el.type === 'infrastructure') {
+                            w = el.width || 80;
+                            h = el.height || 70;
+                        } else if (el.type === 'boundary') {
+                            w = el.width || 320;
+                            h = el.height || 240;
+                        } else if (el.type === 'custom_image') {
+                            w = el.width || 120;
+                            h = el.height || 120;
+                        }
+                        addPoint(el.x, el.y);
+                        addPoint(el.x + w, el.y);
+                        addPoint(el.x, el.y + h);
+                        addPoint(el.x + w, el.y + h);
+                    }
+                });
+
+                this.state.flows.forEach(f => {
+                    const srcNode = this.state.elements.find(e => e.id === f.sourceId);
+                    const dstNode = this.state.elements.find(e => e.id === f.targetId);
+                    if (!srcNode || !dstNode) return;
+
+                    const p1 = this.getAnchorCoordinates(srcNode, f.sourceAnchor || 'right-2');
+                    const p2 = this.getAnchorCoordinates(dstNode, f.targetAnchor || 'left-2');
+                    addPoint(p1.x, p1.y);
+                    addPoint(p2.x, p2.y);
+
+                    if (f.points && f.points.length > 0) {
+                        f.points.forEach(pt => addPoint(pt.x, pt.y));
+                    } else if ((f.bendX || 0) !== 0 || (f.bendY || 0) !== 0) {
+                        const midX = (p1.x + p2.x) / 2;
+                        const midY = (p1.y + p2.y) / 2;
+                        addPoint(midX + f.bendX, midY + f.bendY);
+                    }
+                });
+
+                return { minX, minY, maxX, maxY };
+            }
+
+            applyViewMode() {
+                const wrapper = document.getElementById('isometric-wrapper');
+                const btnDropdown = document.getElementById('btn-canvas-view-dropdown');
+                if (wrapper) {
+                    if (this.viewMode === 'ne-isometric') {
+                        wrapper.setAttribute('transform', 'matrix(0.8660254, 0.5, -0.8660254, 0.5, 0, 0)');
+                        if (btnDropdown) btnDropdown.innerHTML = '<i class="bi bi-box"></i>';
+                    } else if (this.viewMode === 'nw-isometric') {
+                        wrapper.setAttribute('transform', 'matrix(0.8660254, -0.5, 0.8660254, 0.5, 0, 0)');
+                        if (btnDropdown) btnDropdown.innerHTML = '<i class="bi bi-box-seam"></i>';
+                    } else {
+                        wrapper.removeAttribute('transform');
+                        if (btnDropdown) btnDropdown.innerHTML = '<i class="bi bi-square"></i>';
+                    }
+                }
+
+                const optNe = document.getElementById('opt-view-ne-iso');
+                const optNw = document.getElementById('opt-view-nw-iso');
+                const optFlat = document.getElementById('opt-view-flat');
+                if (optNe) optNe.classList.toggle('active', this.viewMode === 'ne-isometric');
+                if (optNw) optNw.classList.toggle('active', this.viewMode === 'nw-isometric');
+                if (optFlat) optFlat.classList.toggle('active', this.viewMode === 'flat');
+            }
+
+            setViewMode(mode) {
+                if (this.viewMode === mode) return;
+                this.viewMode = mode;
+                this.isIsometric = mode !== 'flat';
+                localStorage.setItem('canvas_view_mode', mode);
+                localStorage.setItem('canvas_is_isometric', this.isIsometric);
+                this.applyViewMode();
+                this.logEvent("CHANGE", `Switched canvas display view mode context to ${mode}`);
+                this.zoomToFit();
+                this.refreshAppViewVisualWorkspace();
+            } applyCanvasTheme() {
+                const wrapper = document.querySelector('.workspace-wrapper');
+                const btnTheme = document.getElementById('btn-canvas-theme');
+                if (wrapper) {
+                    if (this.canvasTheme === 'dark') {
+                        wrapper.classList.add('dark-theme-canvas');
+                        if (btnTheme) {
+                            btnTheme.innerHTML = '<i class="bi bi-sun"></i>';
+                            btnTheme.setAttribute('title', 'Switch to Canvas Light Mode');
+                            btnTheme.classList.replace('text-secondary', 'text-warning');
+                        }
+                    } else {
+                        wrapper.classList.remove('dark-theme-canvas');
+                        if (btnTheme) {
+                            btnTheme.innerHTML = '<i class="bi bi-moon-stars"></i>';
+                            btnTheme.setAttribute('title', 'Toggle Canvas Dark Mode');
+                            btnTheme.classList.replace('text-warning', 'text-secondary');
+                        }
+                    }
+                }
+            }
+
+            updateGridSettingsUiAndPattern() {
+                const pattern = document.getElementById('grid-pattern');
+                if (pattern) {
+                    pattern.setAttribute('width', this.gridSize);
+                    pattern.setAttribute('height', this.gridSize);
+                    const path = pattern.querySelector('path');
+                    if (path) {
+                        path.setAttribute('d', `M ${this.gridSize} 0 L 0 0 0 ${this.gridSize}`);
+                    }
+                }
+
+                [10, 20, 40, 80].forEach(size => {
+                    const opt = document.getElementById(`opt-grid-size-${size}`);
+                    if (opt) {
+                        opt.classList.toggle('active', this.gridSize === size);
+                    }
+                });
+
+                const optSnap = document.getElementById('opt-grid-snap-toggle');
+                if (optSnap) {
+                    optSnap.innerHTML = this.isSnappingActive ? '<i class="bi bi-check-lg me-1"></i>Snap to Grid' : 'Snap to Grid';
+                    optSnap.classList.toggle('active', this.isSnappingActive);
+                }
+            }
+
+            snapValue(val) {
+                const factor = this.isSnappingActive ? this.gridSize : 1;
+                return Math.round(val / factor) * factor;
+            }
+
+            toggleCanvasTheme() {
+                this.canvasTheme = this.canvasTheme === 'dark' ? 'light' : 'dark';
+                localStorage.setItem('canvas_theme', this.canvasTheme);
+                this.applyCanvasTheme();
+                this.logEvent("CHANGE", `Switched canvas theme to ${this.canvasTheme}`);
+                this.refreshAppViewVisualWorkspace();
             }
 
             toggleLeftPanel() {
@@ -2052,16 +2961,13 @@
             bindPrintScalingEngine() {
                 window.addEventListener('beforeprint', () => {
                     if (!this.state.elements || this.state.elements.length === 0) return;
-                    let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
-
-                    this.state.elements.forEach(el => {
-                        const w = el.width || 240; const h = el.height || 80;
-                        if (el.x < minX) minX = el.x; if (el.y < minY) minY = el.y;
-                        if (el.x + w > maxX) maxX = el.x + w; if (el.y + h > maxY) maxY = el.y + h;
-                    });
-
-                    minX -= 50; minY -= 50; maxX += 50; maxY += 50;
-                    const computedWidth = maxX - minX; const computedHeight = maxY - minY;
+                    const bbox = this.getIsometricBoundingBox();
+                    const minX = bbox.minX - 50;
+                    const minY = bbox.minY - 50;
+                    const maxX = bbox.maxX + 50;
+                    const maxY = bbox.maxY + 50;
+                    const computedWidth = maxX - minX;
+                    const computedHeight = maxY - minY;
 
                     this.dom.svg.setAttribute('viewBox', `${minX} ${minY} ${computedWidth} ${computedHeight}`);
                     this.dom.transformGroup.removeAttribute('transform');
@@ -2226,6 +3132,7 @@
             bindUiEvents() {
                 document.getElementById('btn-export').addEventListener('click', () => this.exportWorkspaceJsonPayloadFile());
                 document.getElementById('btn-import').addEventListener('click', () => this.triggerWorkspaceJsonImportSelector());
+                document.getElementById('btn-reset-session').addEventListener('click', () => this.resetSession());
                 document.getElementById('btn-help-trigger').addEventListener('click', () => {
                     const closeBtn = document.querySelector('#modal-help .btn-close');
                     if (closeBtn) closeBtn.style.display = '';
@@ -2288,10 +3195,57 @@
                     });
                 }
 
+                const propsDisableIso = document.getElementById('props-input-disable-iso');
+                if (propsDisableIso) {
+                    propsDisableIso.addEventListener('change', (ev) => {
+                        if (this.state.selectedElementIds.length === 1) {
+                            const item = this.state.elements.find(el => el.id === this.state.selectedElementIds[0]);
+                            if (item && ['textbox', 'headline', 'custom_image', 'step_activity'].includes(item.type)) {
+                                item.disableIso = ev.target.checked;
+                                this.logEvent("CHANGE", `Toggled isometric projection override on component "${item.name}"`);
+                                this.saveSessionToLocalStorage();
+                                this.renderSvgDiagramElements();
+                            }
+                        }
+                    });
+                }
+
                 document.getElementById('btn-canvas-zoom-in').addEventListener('click', () => { this.zoomScale = Math.min(this.zoomScale + 0.1, 2.5); this.applySvgViewportTransformations(); });
                 document.getElementById('btn-canvas-zoom-out').addEventListener('click', () => { this.zoomScale = Math.max(this.zoomScale - 0.1, 0.4); this.applySvgViewportTransformations(); });
                 document.getElementById('btn-canvas-zoom-reset').addEventListener('click', () => this.zoomToFit());
                 document.getElementById('btn-canvas-print').addEventListener('click', () => window.print());
+                const optNe = document.getElementById('opt-view-ne-iso');
+                const optNw = document.getElementById('opt-view-nw-iso');
+                const optFlat = document.getElementById('opt-view-flat');
+                const btnTheme = document.getElementById('btn-canvas-theme');
+                if (optNe) optNe.addEventListener('click', (e) => { e.preventDefault(); this.setViewMode('ne-isometric'); });
+                if (optNw) optNw.addEventListener('click', (e) => { e.preventDefault(); this.setViewMode('nw-isometric'); });
+                if (optFlat) optFlat.addEventListener('click', (e) => { e.preventDefault(); this.setViewMode('flat'); });
+
+                // Grid settings listeners
+                [10, 20, 40, 80].forEach(size => {
+                    const opt = document.getElementById(`opt-grid-size-${size}`);
+                    if (opt) {
+                        opt.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            this.gridSize = size;
+                            localStorage.setItem('canvas_grid_size', size);
+                            this.updateGridSettingsUiAndPattern();
+                        });
+                    }
+                });
+
+                const optSnap = document.getElementById('opt-grid-snap-toggle');
+                if (optSnap) {
+                    optSnap.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        this.isSnappingActive = !this.isSnappingActive;
+                        localStorage.setItem('canvas_grid_snapping', this.isSnappingActive);
+                        this.updateGridSettingsUiAndPattern();
+                    });
+                }
+
+                if (btnTheme) btnTheme.addEventListener('click', () => this.toggleCanvasTheme());
                 document.getElementById('btn-register-export-csv').addEventListener('click', () => this.exportThreatRegisterToCsvFile());
 
                 const configureHeaderSortMatrix = (domId, key) => {
@@ -2310,6 +3264,13 @@
                 configureHeaderSortMatrix('th-sort-status', 'status');
                 configureHeaderSortMatrix('th-sort-component', 'componentName');
 
+                const sortSelect = document.getElementById('select-templates-sort');
+                if (sortSelect) {
+                    sortSelect.addEventListener('change', () => {
+                        this.updateThreatSuggestionsWizardView();
+                    });
+                }
+
                 document.getElementById('btn-open-session-meta').addEventListener('click', () => {
                     document.getElementById('modal-meta-project-title').value = this.state.projectTitle || '';
                     document.getElementById('modal-meta-scope').value = this.state.scopeDefinition || '';
@@ -2317,7 +3278,7 @@
                     this.sessionMetaModal.show();
                 });
 
-                const paletteIds = ['pal-process', 'pal-datastore', 'pal-interactor', 'pal-boundary', 'pal-boundary-line', 'pal-step-activity', 'pal-textbox', 'pal-headline', 'pal-infrastructure'];
+                const paletteIds = ['pal-process', 'pal-datastore', 'pal-interactor', 'pal-boundary', 'pal-boundary-line', 'pal-step-activity', 'pal-textbox', 'pal-headline', 'pal-infrastructure', 'pal-custom-image', 'pal-swimlane'];
                 paletteIds.forEach(id => {
                     const el = document.getElementById(id);
                     if (el) {
@@ -2334,6 +3295,17 @@
                 document.getElementById('btn-modal-threat-save').addEventListener('click', () => this.commitThreatModalFormEditorData());
                 document.getElementById('btn-register-add-custom').addEventListener('click', () => this.openThreatModalForCreation());
 
+                // Threat Templates Panel & Modal Events
+                document.getElementById('btn-import-templates').addEventListener('click', () => this.triggerThreatTemplatesImport());
+                document.getElementById('btn-export-templates').addEventListener('click', () => this.exportThreatTemplatesBackup());
+                document.getElementById('btn-add-template').addEventListener('click', () => {
+                    const count = this.state.selectedElementIds.length;
+                    const item = count === 1 ? this.state.elements.find(e => e.id === this.state.selectedElementIds[0]) : (this.state.selectedFlowId ? this.state.flows.find(f => f.id === this.state.selectedFlowId) : null);
+                    const type = item ? (item.type || 'flow') : 'flow';
+                    this.openEditTemplateModal(null, type);
+                });
+                document.getElementById('btn-modal-template-save').addEventListener('click', () => this.saveTemplate());
+
                 document.getElementById('filter-threat-search').addEventListener('input', () => this.renderThreatRegisterTableGrid());
                 document.getElementById('filter-threat-severity').addEventListener('change', () => this.renderThreatRegisterTableGrid());
 
@@ -2343,7 +3315,14 @@
                         if (item) {
                             const oldName = item.name; item.name = ev.target.value;
                             this.logEvent("CHANGE", `Renamed component label asset "${oldName}" to "${item.name}"`);
-                            this.syncDirectDOMElementContent(item); this.saveSessionToLocalStorage();
+                            if (item.type === 'swimlane') {
+                                this.renderSvgDiagramElements();
+                                const headlineInput = document.getElementById('props-swimlane-headline');
+                                if (headlineInput) headlineInput.value = item.name;
+                            } else {
+                                this.syncDirectDOMElementContent(item);
+                            }
+                            this.saveSessionToLocalStorage();
                         }
                     } else if (this.state.selectedFlowId) {
                         const flow = this.state.flows.find(f => f.id === this.state.selectedFlowId);
@@ -2431,6 +3410,36 @@
                             flow.notes = ev.target.value;
                             this.logEvent("CHANGE", `Modified context description notes tracking parameters matrix on flow line stream "${flow.name}"`);
                             this.saveSessionToLocalStorage();
+                        }
+                    }
+                });
+
+                document.getElementById('props-input-image-url').addEventListener('change', (ev) => {
+                    if (this.state.selectedElementIds.length === 1) {
+                        const item = this.state.elements.find(el => el.id === this.state.selectedElementIds[0]);
+                        if (item && item.type === 'custom_image') {
+                            item.imageUrl = ev.target.value;
+                            this.logEvent("CHANGE", `Updated custom image URL path source for component "${item.name}"`);
+                            this.renderSvgDiagramElements(); this.saveSessionToLocalStorage();
+                        }
+                    }
+                });
+
+                document.getElementById('props-input-image-file').addEventListener('change', (ev) => {
+                    if (this.state.selectedElementIds.length === 1) {
+                        const item = this.state.elements.find(el => el.id === this.state.selectedElementIds[0]);
+                        if (item && item.type === 'custom_image') {
+                            const file = ev.target.files[0];
+                            if (file) {
+                                const reader = new FileReader();
+                                reader.onload = (e) => {
+                                    item.imageUrl = e.target.result;
+                                    document.getElementById('props-input-image-url').value = item.imageUrl;
+                                    this.logEvent("CHANGE", `Uploaded local file image data source for component "${item.name}"`);
+                                    this.renderSvgDiagramElements(); this.saveSessionToLocalStorage();
+                                };
+                                reader.readAsDataURL(file);
+                            }
                         }
                     }
                 });
@@ -2567,11 +3576,158 @@
                     });
                 }
 
+                const propsFlowThicknessSelect = document.getElementById('props-flow-thickness-select');
+                if (propsFlowThicknessSelect) {
+                    propsFlowThicknessSelect.addEventListener('change', (ev) => {
+                        if (this.state.selectedFlowId) {
+                            const flow = this.state.flows.find(f => f.id === this.state.selectedFlowId);
+                            if (flow) {
+                                flow.thickness = parseInt(ev.target.value);
+                                this.logEvent("CHANGE", `Altered line thickness to ${flow.thickness}px for communication stream "${flow.name}"`);
+                                this.saveSessionToLocalStorage(); this.renderSvgDiagramElements();
+                            }
+                        }
+                    });
+                }
+
+                document.querySelectorAll('#props-flow-color-grid .color-swatch-btn').forEach(btn => {
+                    btn.addEventListener('click', (ev) => {
+                        const targetColor = ev.currentTarget.getAttribute('data-color');
+                        if (this.state.selectedFlowId) {
+                            const flow = this.state.flows.find(f => f.id === this.state.selectedFlowId);
+                            if (flow) {
+                                flow.color = targetColor;
+                                this.logEvent("CHANGE", `Modified communication stream color for "${flow.name}" to ${targetColor}`);
+
+                                document.querySelectorAll('#props-flow-color-grid .color-swatch-btn').forEach(b => b.classList.remove('active'));
+                                ev.currentTarget.classList.add('active');
+
+                                this.renderSvgDiagramElements(); this.saveSessionToLocalStorage();
+                            }
+                        }
+                    });
+                });
+
                 document.getElementById('props-btn-delete').addEventListener('click', () => this.executeTargetedActiveSelectionRemovalTask());
                 document.getElementById('props-btn-send-back').addEventListener('click', () => this.changeSelectionZDepth('send-back'));
                 document.getElementById('props-btn-send-backward').addEventListener('click', () => this.changeSelectionZDepth('send-backward'));
                 document.getElementById('props-btn-bring-forward').addEventListener('click', () => this.changeSelectionZDepth('bring-forward'));
                 document.getElementById('props-btn-bring-front').addEventListener('click', () => this.changeSelectionZDepth('bring-front'));
+
+                // Swimlane Property Panel Event Bindings
+                const colsList = document.getElementById('props-swimlane-cols-list');
+                const rowsList = document.getElementById('props-swimlane-rows-list');
+                const headlineInput = document.getElementById('props-swimlane-headline');
+
+                if (headlineInput) {
+                    headlineInput.addEventListener('change', (ev) => {
+                        if (this.state.selectedElementIds.length === 1) {
+                            const item = this.state.elements.find(el => el.id === this.state.selectedElementIds[0]);
+                            if (item && item.type === 'swimlane') {
+                                item.name = ev.target.value;
+                                document.getElementById('props-input-name').value = item.name;
+                                this.renderSvgDiagramElements();
+                                this.saveSessionToLocalStorage();
+                            }
+                        }
+                    });
+                }
+
+                if (colsList) {
+                    colsList.addEventListener('change', (ev) => {
+                        if (ev.target.classList.contains('col-rename-input')) {
+                            const index = parseInt(ev.target.getAttribute('data-index'));
+                            if (this.state.selectedElementIds.length === 1) {
+                                const item = this.state.elements.find(el => el.id === this.state.selectedElementIds[0]);
+                                if (item && item.type === 'swimlane' && item.columns) {
+                                    item.columns[index] = ev.target.value;
+                                    this.renderSvgDiagramElements();
+                                    this.saveSessionToLocalStorage();
+                                }
+                            }
+                        }
+                    });
+
+                    colsList.addEventListener('click', (ev) => {
+                        const deleteBtn = ev.target.closest('.col-delete-btn');
+                        if (deleteBtn) {
+                            const index = parseInt(deleteBtn.getAttribute('data-index'));
+                            if (this.state.selectedElementIds.length === 1) {
+                                const item = this.state.elements.find(el => el.id === this.state.selectedElementIds[0]);
+                                if (item && item.type === 'swimlane' && item.columns && item.columns.length > 1) {
+                                    item.columns.splice(index, 1);
+                                    this.renderSvgDiagramElements();
+                                    this.renderSwimlanePropertiesInspectorControls(item);
+                                    this.saveSessionToLocalStorage();
+                                }
+                            }
+                        }
+                    });
+                }
+
+                if (rowsList) {
+                    rowsList.addEventListener('change', (ev) => {
+                        if (ev.target.classList.contains('row-rename-input')) {
+                            const index = parseInt(ev.target.getAttribute('data-index'));
+                            if (this.state.selectedElementIds.length === 1) {
+                                const item = this.state.elements.find(el => el.id === this.state.selectedElementIds[0]);
+                                if (item && item.type === 'swimlane' && item.rows) {
+                                    item.rows[index] = ev.target.value;
+                                    this.renderSvgDiagramElements();
+                                    this.saveSessionToLocalStorage();
+                                }
+                            }
+                        }
+                    });
+
+                    rowsList.addEventListener('click', (ev) => {
+                        const deleteBtn = ev.target.closest('.row-delete-btn');
+                        if (deleteBtn) {
+                            const index = parseInt(deleteBtn.getAttribute('data-index'));
+                            if (this.state.selectedElementIds.length === 1) {
+                                const item = this.state.elements.find(el => el.id === this.state.selectedElementIds[0]);
+                                if (item && item.type === 'swimlane' && item.rows && item.rows.length > 1) {
+                                    item.rows.splice(index, 1);
+                                    this.renderSvgDiagramElements();
+                                    this.renderSwimlanePropertiesInspectorControls(item);
+                                    this.saveSessionToLocalStorage();
+                                }
+                            }
+                        }
+                    });
+                }
+
+                const addColBtn = document.getElementById('props-swimlane-add-col');
+                if (addColBtn) {
+                    addColBtn.addEventListener('click', () => {
+                        if (this.state.selectedElementIds.length === 1) {
+                            const item = this.state.elements.find(el => el.id === this.state.selectedElementIds[0]);
+                            if (item && item.type === 'swimlane') {
+                                if (!item.columns) item.columns = [];
+                                item.columns.push(`Column ${item.columns.length + 1}`);
+                                this.renderSvgDiagramElements();
+                                this.renderSwimlanePropertiesInspectorControls(item);
+                                this.saveSessionToLocalStorage();
+                            }
+                        }
+                    });
+                }
+
+                const addRowBtn = document.getElementById('props-swimlane-add-row');
+                if (addRowBtn) {
+                    addRowBtn.addEventListener('click', () => {
+                        if (this.state.selectedElementIds.length === 1) {
+                            const item = this.state.elements.find(el => el.id === this.state.selectedElementIds[0]);
+                            if (item && item.type === 'swimlane') {
+                                if (!item.rows) item.rows = [];
+                                item.rows.push(`Row ${item.rows.length + 1}`);
+                                this.renderSvgDiagramElements();
+                                this.renderSwimlanePropertiesInspectorControls(item);
+                                this.saveSessionToLocalStorage();
+                            }
+                        }
+                    });
+                }
             }
 
             bindCanvasEvents() {
@@ -2628,11 +3784,11 @@
 
                         if (bl && (this.activeFlowDragMode === 'bl_start' || this.activeFlowDragMode === 'bl_end' || this.activeFlowDragMode === 'bl_bend')) {
                             if (this.activeFlowDragMode === 'bl_start') {
-                                bl.x = Math.round(canvasSpaceCoords.x / 10) * 10;
-                                bl.y = Math.round(canvasSpaceCoords.y / 10) * 10;
+                                bl.x = this.snapValue(canvasSpaceCoords.x);
+                                bl.y = this.snapValue(canvasSpaceCoords.y);
                             } else if (this.activeFlowDragMode === 'bl_end') {
-                                bl.x2 = Math.round(canvasSpaceCoords.x / 10) * 10;
-                                bl.y2 = Math.round(canvasSpaceCoords.y / 10) * 10;
+                                bl.x2 = this.snapValue(canvasSpaceCoords.x);
+                                bl.y2 = this.snapValue(canvasSpaceCoords.y);
                             } else if (this.activeFlowDragMode === 'bl_bend') {
                                 const baseMidX = (bl.x + bl.x2) / 2; const baseMidY = (bl.y + bl.y2) / 2;
                                 bl.bendX = 2 * (canvasSpaceCoords.x - baseMidX); bl.bendY = 2 * (canvasSpaceCoords.y + 24 - baseMidY);
@@ -2652,8 +3808,8 @@
                                 this.renderSvgDiagramElements();
                             }
                             else if (this.activeFlowDragMode === 'flow_point') {
-                                const gridX = Math.round(canvasSpaceCoords.x / 10) * 10;
-                                const gridY = Math.round(canvasSpaceCoords.y / 10) * 10;
+                                const gridX = this.snapValue(canvasSpaceCoords.x);
+                                const gridY = this.snapValue(canvasSpaceCoords.y);
                                 if (!flow.points) flow.points = [];
                                 const currentPt = flow.points[this.activeFlowDragPointIndex];
                                 if (currentPt) {
@@ -2668,11 +3824,8 @@
                                 // Find if mouse is over any element
                                 let hoverEl = null;
                                 this.state.elements.forEach(el => {
-                                    if (['boundary', 'textbox', 'headline', 'boundary_line', 'step_activity'].includes(el.type)) return;
-                                    const w = el.width || 240;
-                                    const h = el.height || 80;
-                                    if (canvasSpaceCoords.x >= el.x && canvasSpaceCoords.x <= el.x + w &&
-                                        canvasSpaceCoords.y >= el.y && canvasSpaceCoords.y <= el.y + h) {
+                                    if (['boundary', 'textbox', 'headline', 'boundary_line', 'step_activity', 'swimlane'].includes(el.type)) return;
+                                    if (this.isPointInsideElement(el, canvasSpaceCoords)) {
                                         hoverEl = el;
                                     }
                                 });
@@ -2737,8 +3890,8 @@
                     if (this.resizingElementId) {
                         const targetEl = this.state.elements.find(el => el.id === this.resizingElementId);
                         if (targetEl) {
-                            targetEl.width = Math.max(120, Math.round((this.resizeStartDims.width + (canvasSpaceCoords.x - this.resizeStartCanvasCoords.x)) / 10) * 10);
-                            targetEl.height = Math.max(40, Math.round((this.resizeStartDims.height + (canvasSpaceCoords.y - this.resizeStartCanvasCoords.y)) / 10) * 10);
+                            targetEl.width = Math.max(120, this.snapValue(this.resizeStartDims.width + (canvasSpaceCoords.x - this.resizeStartCanvasCoords.x)));
+                            targetEl.height = Math.max(40, this.snapValue(this.resizeStartDims.height + (canvasSpaceCoords.y - this.resizeStartCanvasCoords.y)));
                             this.renderSvgDiagramElements();
                         }
                         return;
@@ -2754,7 +3907,7 @@
                         const deltaY = canvasSpaceCoords.y - this.dragStartCanvasCoords.y;
                         this.initialDragPositions.forEach(pos => {
                             const el = this.state.elements.find(item => item.id === pos.id);
-                            if (el) { el.x = Math.round((pos.x + deltaX) / 10) * 10; el.y = Math.round((pos.y + deltaY) / 10) * 10; }
+                            if (el) { el.x = this.snapValue(pos.x + deltaX); el.y = this.snapValue(pos.y + deltaY); }
                         });
                         this.renderSvgDiagramElements();
                     }
@@ -2809,8 +3962,8 @@
                         const canvasSpaceCoords = this.convertClientScreenCoordinatesToCanvasSpace(ev.clientX, ev.clientY);
                         let dropTargetId = null;
                         this.state.elements.forEach(el => {
-                            if (el.id === this.phantomWireSourceId || ['boundary', 'textbox', 'headline', 'boundary_line', 'step_activity'].includes(el.type)) return;
-                            if (canvasSpaceCoords.x >= el.x && canvasSpaceCoords.x <= el.x + (el.width || 240) && canvasSpaceCoords.y >= el.y && canvasSpaceCoords.y <= el.y + (el.height || 80)) dropTargetId = el.id;
+                            if (el.id === this.phantomWireSourceId || ['boundary', 'textbox', 'headline', 'boundary_line', 'step_activity', 'swimlane'].includes(el.type)) return;
+                            if (this.isPointInsideElement(el, canvasSpaceCoords)) dropTargetId = el.id;
                         });
                         if (dropTargetId) {
                             const flowId = `fl-${Date.now()}`;
@@ -2845,7 +3998,7 @@
                                 targetAnchor: targetAnchor,
                                 notes: '',
                                 secProps: { encrypted: 'false', authenticated: 'false' }, isBidirectional: false, isDashed: false, ports: '', bendX: 0, bendY: 0, textOffset: 0.5,
-                                points: [], curveStyle: 'smooth'
+                                points: [], curveStyle: this.isIsometric ? 'sharp' : 'smooth'
                             });
                             this.logEvent("CREATE", `Linked network architecture components via unified flow line. Connected "${srcNode ? srcNode.name : 'Unknown'}" to "${dstNode ? dstNode.name : 'Unknown'}"`);
                             this.saveSessionToLocalStorage(); this.refreshAppViewVisualWorkspace(); this.handleFlowSelectionEvent(flowId);
@@ -2965,26 +4118,9 @@
                     return;
                 }
 
-                let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
-                this.state.elements.forEach(el => {
-                    if (el.x < minX) minX = el.x;
-                    if (el.y < minY) minY = el.y;
-
-                    if (el.type === 'boundary_line') {
-                        if (el.x2 < minX) minX = el.x2;
-                        if (el.x2 > maxX) maxX = el.x2;
-                        if (el.y2 < minY) minY = el.y2;
-                        if (el.y2 > maxY) maxY = el.y2;
-                    } else {
-                        const w = el.width || (el.type === 'step_activity' ? 180 : 240);
-                        const h = el.height || (el.type === 'step_activity' ? 50 : 80);
-                        if (el.x + w > maxX) maxX = el.x + w;
-                        if (el.y + h > maxY) maxY = el.y + h;
-                    }
-                });
-
-                const contentWidth = maxX - minX;
-                const contentHeight = maxY - minY;
+                const bbox = this.getIsometricBoundingBox();
+                const contentWidth = bbox.maxX - bbox.minX;
+                const contentHeight = bbox.maxY - bbox.minY;
 
                 const rect = this.dom.svg.getBoundingClientRect();
                 const canvasWidth = rect.width || window.innerWidth;
@@ -3002,8 +4138,8 @@
                 newScale = Math.max(0.4, Math.min(newScale, 2.5));
                 this.zoomScale = newScale;
 
-                const contentCenterX = minX + contentWidth / 2;
-                const contentCenterY = minY + contentHeight / 2;
+                const contentCenterX = bbox.minX + contentWidth / 2;
+                const contentCenterY = bbox.minY + contentHeight / 2;
 
                 const canvasCenterX = canvasWidth / 2;
                 const canvasCenterY = canvasHeight / 2;
@@ -3017,7 +4153,19 @@
 
             convertClientScreenCoordinatesToCanvasSpace(clientX, clientY) {
                 const rect = this.dom.svg.getBoundingClientRect();
-                return { x: (clientX - rect.left - this.panX) / this.zoomScale, y: (clientY - rect.top - this.panY) / this.zoomScale };
+                const screenX = (clientX - rect.left - this.panX) / this.zoomScale;
+                const screenY = (clientY - rect.top - this.panY) / this.zoomScale;
+                if (this.viewMode === 'ne-isometric') {
+                    const x = (screenX / 1.732050807568877) + screenY;
+                    const y = screenY - (screenX / 1.732050807568877);
+                    return { x, y };
+                } else if (this.viewMode === 'nw-isometric') {
+                    const x = (screenX / 1.732050807568877) - screenY;
+                    const y = screenY + (screenX / 1.732050807568877);
+                    return { x, y };
+                } else {
+                    return { x: screenX, y: screenY };
+                }
             }
 
             evaluateBoxSelectionIntersections(bx, by, bw, bh) {
@@ -3053,6 +4201,8 @@
                 else if (type === 'step_activity') { defaultName = 'Describe interaction track sequence details...'; }
                 else if (type === 'textbox') { defaultName = 'Click inside properties sheet to edit commentary...'; }
                 else if (type === 'headline') { defaultName = 'Section Banner Headline'; }
+                else if (type === 'custom_image') { defaultName = 'Custom Graphic Image'; }
+                else if (type === 'swimlane') { defaultName = 'Swimlane Grid Layout'; }
 
                 // Determine dimensions for lower-left positioning
                 let w = 240;
@@ -3060,14 +4210,17 @@
                 if (type === 'boundary') { w = 320; h = 240; }
                 else if (type === 'step_activity') { w = 260; h = 50; }
                 else if (type === 'infrastructure') { w = 80; h = 70; }
+                else if (type === 'custom_image') { w = 120; h = 120; }
+                else if (type === 'swimlane') { w = 680; h = 480; }
 
                 let targetX, targetY;
                 if (customX !== null && customY !== null) {
-                    targetX = Math.round((customX - w / 2) / 10) * 10;
-                    targetY = Math.round((customY - h / 2) / 10) * 10;
+                    targetX = this.snapValue(customX - w / 2);
+                    targetY = this.snapValue(customY - h / 2);
                 } else {
-                    targetX = Math.round((canvasLeft + 30) / 10) * 10;
-                    targetY = Math.round((canvasBottom - h - 110) / 10) * 10;
+                    const center = this.convertClientScreenCoordinatesToCanvasSpace(rect.left + rect.width / 2, rect.top + rect.height / 2);
+                    targetX = this.snapValue(center.x - w / 2);
+                    targetY = this.snapValue(center.y - h / 2);
                 }
 
                 const elementObj = {
@@ -3076,9 +4229,11 @@
                     ...(type === 'headline' && { orientation: 'horizontal', fontSize: '24' }),
                     ...(type === 'step_activity' && { width: 260, height: 50, stepNumber: 1, circleColor: 'blue' }),
                     ...(type === 'boundary_line' && { x2: targetX + 150, y2: targetY, bendX: 0, bendY: 0, textOffset: 0.5 }),
-                    ...(type !== 'boundary' && type !== 'boundary_line' && type !== 'textbox' && type !== 'headline' && type !== 'step_activity' && type !== 'infrastructure' && { secProps, icon, width: w, height: h }),
+                    ...(type !== 'boundary' && type !== 'boundary_line' && type !== 'textbox' && type !== 'headline' && type !== 'step_activity' && type !== 'infrastructure' && type !== 'custom_image' && type !== 'swimlane' && { secProps, icon, width: w, height: h }),
                     ...(type === 'infrastructure' && { icon, width: w, height: h, iconColor: 'cyan' }),
-                    ...(type === 'boundary' && { width: 320, height: 240 })
+                    ...(type === 'boundary' && { width: 320, height: 240 }),
+                    ...(type === 'custom_image' && { width: w, height: h, imageUrl: '' }),
+                    ...(type === 'swimlane' && { width: w, height: h, columns: ['Column 1', 'Column 2'], rows: ['Row 1', 'Row 2'] })
                 };
 
                 this.state.elements.push(elementObj);
@@ -3184,19 +4339,26 @@
                     this.saveSessionToLocalStorage();
                     this.refreshAppViewVisualWorkspace();
                 }
-            }
-
-            syncDirectDOMElementContent(item) {
+            } syncDirectDOMElementContent(item) {
                 const textContainer = this.dom.svg.querySelector(`.node-element[data-id="${item.id}"] .card-text-render-target`);
-                if (textContainer) textContainer.innerText = item.name;
+                if (textContainer) {
+                    if (textContainer.tagName.toLowerCase() === 'text') {
+                        textContainer.textContent = item.name;
+                    } else {
+                        textContainer.innerText = item.name;
+                    }
+                }
             }
 
             calculateBoundingBoxAnchorCircumferenceExitPoint(src, dstOrPt) {
-                const srcW = src.width || 240; const srcH = src.height || 80;
+                const srcW = src.width || (src.type === 'custom_image' ? 120 : (src.type === 'infrastructure' ? 80 : 240));
+                const srcH = src.height || (src.type === 'custom_image' ? 120 : (src.type === 'infrastructure' ? 70 : 80));
                 const c1 = { x: src.x + srcW / 2, y: src.y + srcH / 2 };
                 let c2 = { x: 0, y: 0 };
                 if (dstOrPt.width !== undefined || dstOrPt.height !== undefined) {
-                    c2.x = dstOrPt.x + (dstOrPt.width || 240) / 2; c2.y = dstOrPt.y + (dstOrPt.height || 80) / 2;
+                    const dstW = dstOrPt.width || (dstOrPt.type === 'custom_image' ? 120 : (dstOrPt.type === 'infrastructure' ? 80 : 240));
+                    const dstH = dstOrPt.height || (dstOrPt.type === 'custom_image' ? 120 : (dstOrPt.type === 'infrastructure' ? 70 : 80));
+                    c2.x = dstOrPt.x + dstW / 2; c2.y = dstOrPt.y + dstH / 2;
                 } else { c2.x = dstOrPt.x; c2.y = dstOrPt.y; }
                 const dx = c2.x - c1.x; const dy = c2.y - c1.y;
                 if (dx === 0 && dy === 0) return { x: c1.x, y: c1.y };
@@ -3272,7 +4434,299 @@
                 return html;
             }
 
+            layoutSwimlanes() {
+                const swimlanes = this.state.elements.filter(e => e.type === 'swimlane');
+                swimlanes.forEach(swim => {
+                    const cols = swim.columns || ['Column 1', 'Column 2'];
+                    const rows = swim.rows || ['Row 1', 'Row 2'];
+                    const numCols = cols.length;
+                    const numRows = rows.length;
+
+                    const minColWidth = 320;
+                    const minRowHeight = 220;
+                    const padding = 30;
+
+                    const titleHeight = 40;
+                    const headerHeight = cols.every(c => !c || c.trim() === '') ? 0 : 35;
+                    const rowHeaderWidth = rows.every(r => !r || r.trim() === '') ? 0 : 120;
+
+                    const colWidths = new Array(numCols).fill(minColWidth);
+                    const rowHeights = new Array(numRows).fill(minRowHeight);
+
+                    const cellAssignments = [];
+
+                    this.state.elements.forEach(el => {
+                        if (['swimlane', 'boundary', 'boundary_line', 'textbox', 'headline'].includes(el.type)) return;
+
+                        const elW = el.width || 240;
+                        const elH = el.height || 80;
+                        const cx = el.x + elW / 2;
+                        const cy = el.y + elH / 2;
+
+                        const rx = cx - (swim.x + rowHeaderWidth);
+                        const ry = cy - (swim.y + titleHeight + headerHeight);
+
+                        if (rx >= 0 && ry >= 0) {
+                            const c = Math.floor(rx / minColWidth);
+                            const r = Math.floor(ry / minRowHeight);
+                            if (c >= 0 && c < numCols && r >= 0 && r < numRows) {
+                                cellAssignments.push({ element: el, r, c, w: elW, h: elH });
+                            }
+                        }
+                    });
+
+                    let currentX = swim.x + rowHeaderWidth;
+                    for (let c = 0; c < numCols; c++) {
+                        let maxW = minColWidth;
+                        const colElements = cellAssignments.filter(a => a.c === c);
+                        colElements.forEach(a => {
+                            const neededW = (a.element.x + a.w + padding) - currentX;
+                            if (neededW > maxW) maxW = neededW;
+                        });
+                        colWidths[c] = this.snapValue(maxW);
+                        currentX += colWidths[c];
+                    }
+
+                    let currentY = swim.y + titleHeight + headerHeight;
+                    for (let r = 0; r < numRows; r++) {
+                        let maxH = minRowHeight;
+                        const rowElements = cellAssignments.filter(a => a.r === r);
+                        rowElements.forEach(a => {
+                            const neededH = (a.element.y + a.h + padding) - currentY;
+                            if (neededH > maxH) maxH = neededH;
+                        });
+                        rowHeights[r] = this.snapValue(maxH);
+                        currentY += rowHeights[r];
+                    }
+
+                    swim.colWidths = colWidths;
+                    swim.rowHeights = rowHeights;
+                    swim.width = rowHeaderWidth + colWidths.reduce((a, b) => a + b, 0);
+                    swim.height = titleHeight + headerHeight + rowHeights.reduce((a, b) => a + b, 0);
+                    swim.cellAssignments = cellAssignments.map(a => ({ id: a.element.id, r: a.r, c: a.c }));
+                });
+            }
+
+            renderSwimlanePropertiesInspectorControls(swim) {
+                const colsList = document.getElementById('props-swimlane-cols-list');
+                const rowsList = document.getElementById('props-swimlane-rows-list');
+                const headlineInput = document.getElementById('props-swimlane-headline');
+
+                if (!colsList || !rowsList || !headlineInput) return;
+
+                headlineInput.value = swim.name;
+
+                colsList.innerHTML = '';
+                const cols = swim.columns || [];
+                cols.forEach((colName, index) => {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'd-flex gap-1 align-items-center mb-1';
+                    itemDiv.innerHTML = `
+                        <input type="text" class="form-control form-control-sm py-0 px-1 shadow-none col-rename-input" style="font-size: 11px;" value="${colName}" data-index="${index}">
+                        <button type="button" class="btn btn-xs btn-outline-danger p-0 d-flex align-items-center justify-content-center col-delete-btn" style="width: 20px; height: 20px; font-size: 10px;" data-index="${index}" ${cols.length <= 1 ? 'disabled' : ''}>
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    `;
+                    colsList.appendChild(itemDiv);
+                });
+
+                rowsList.innerHTML = '';
+                const rows = swim.rows || [];
+                rows.forEach((rowName, index) => {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'd-flex gap-1 align-items-center mb-1';
+                    itemDiv.innerHTML = `
+                        <input type="text" class="form-control form-control-sm py-0 px-1 shadow-none row-rename-input" style="font-size: 11px;" value="${rowName}" data-index="${index}">
+                        <button type="button" class="btn btn-xs btn-outline-danger p-0 d-flex align-items-center justify-content-center row-delete-btn" style="width: 20px; height: 20px; font-size: 10px;" data-index="${index}" ${rows.length <= 1 ? 'disabled' : ''}>
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    `;
+                    rowsList.appendChild(itemDiv);
+                });
+            }
+
+            ensureColorMarkerExists(colorHex, thickness = 2) {
+                const defs = this.dom.svg.querySelector('defs');
+                const cleanHex = colorHex.replace('#', '');
+                const markerId = `arrowhead-${cleanHex}-t${thickness}`;
+                const reverseMarkerId = `arrowhead-${cleanHex}-t${thickness}-reverse`;
+
+                // Proportional scale calculations (userSpaceOnUse)
+                let w = 8 + thickness * 2.5;
+                let h = 5.5 + thickness * 1.8;
+                if (thickness >= 3) {
+                    w += 1.5;
+                    h += 1.0;
+                }
+                const refX = 1.5; // Attach at the base of the arrowhead with a tiny overlap
+                const refY = h / 2;
+
+                if (!document.getElementById(markerId)) {
+                    const marker = document.createElementNS('http://www.w3.org/2000/svg', 'marker');
+                    marker.setAttribute('id', markerId);
+                    marker.setAttribute('markerUnits', 'userSpaceOnUse');
+                    marker.setAttribute('markerWidth', w.toString());
+                    marker.setAttribute('markerHeight', h.toString());
+                    marker.setAttribute('refX', refX.toString());
+                    marker.setAttribute('refY', refY.toString());
+                    marker.setAttribute('orient', 'auto');
+                    marker.innerHTML = `<polygon points="0 0, ${w} ${refY}, 0 ${h}" fill="${colorHex}" />`;
+                    defs.appendChild(marker);
+                }
+
+                if (!document.getElementById(reverseMarkerId)) {
+                    const marker = document.createElementNS('http://www.w3.org/2000/svg', 'marker');
+                    marker.setAttribute('id', reverseMarkerId);
+                    marker.setAttribute('markerUnits', 'userSpaceOnUse');
+                    marker.setAttribute('markerWidth', w.toString());
+                    marker.setAttribute('markerHeight', h.toString());
+                    marker.setAttribute('refX', refX.toString());
+                    marker.setAttribute('refY', refY.toString());
+                    marker.setAttribute('orient', 'auto-start-reverse');
+                    marker.innerHTML = `<polygon points="0 0, ${w} ${refY}, 0 ${h}" fill="${colorHex}" />`;
+                    defs.appendChild(marker);
+                }
+
+                return { markerId, reverseMarkerId };
+            }
+
             renderSvgDiagramElements() {
+                this.layoutSwimlanes();
+                this.dom.layerSwimlanes.innerHTML = '';
+                this.state.elements.filter(e => e.type === 'swimlane').forEach(swim => {
+                    const isSelected = this.state.selectedElementIds.includes(swim.id);
+                    const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+                    g.setAttribute('class', `node-element ${isSelected ? 'selected' : ''} ${swim.isDisabled ? 'disabled' : ''}`);
+                    g.setAttribute('data-id', swim.id);
+                    g.setAttribute('transform', `translate(${swim.x}, ${swim.y})`);
+
+                    const cols = swim.columns || ['Column 1', 'Column 2'];
+                    const rows = swim.rows || ['Row 1', 'Row 2'];
+                    const colWidths = swim.colWidths || cols.map(() => 320);
+                    const rowHeights = swim.rowHeights || rows.map(() => 220);
+
+                    const titleHeight = 40;
+                    const headerHeight = cols.every(c => !c || c.trim() === '') ? 0 : 35;
+                    const rowHeaderWidth = rows.every(r => !r || r.trim() === '') ? 0 : 120;
+
+                    const totalW = swim.width || (rowHeaderWidth + colWidths.reduce((a, b) => a + b, 0));
+                    const totalH = swim.height || (titleHeight + headerHeight + rowHeights.reduce((a, b) => a + b, 0));
+
+                    const bg = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                    bg.setAttribute('width', totalW);
+                    bg.setAttribute('height', totalH);
+                    bg.setAttribute('class', 'swimlane-bg');
+                    bg.setAttribute('rx', '8');
+                    bg.setAttribute('ry', '8');
+                    g.appendChild(bg);
+
+                    const titleBg = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                    titleBg.setAttribute('d', `M 0 8 A 8 8 0 0 1 8 0 L ${totalW - 8} 0 A 8 8 0 0 1 ${totalW} 8 L ${totalW} ${titleHeight} L 0 ${titleHeight} Z`);
+                    titleBg.setAttribute('class', 'swimlane-title-bg');
+                    g.appendChild(titleBg);
+
+                    const titleText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                    titleText.setAttribute('x', '15');
+                    titleText.setAttribute('y', '25');
+                    titleText.setAttribute('class', 'swimlane-title-text');
+                    titleText.textContent = swim.name.toUpperCase();
+                    g.appendChild(titleText);
+
+                    if (headerHeight > 0) {
+                        const colHeadersBg = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                        colHeadersBg.setAttribute('x', rowHeaderWidth);
+                        colHeadersBg.setAttribute('y', titleHeight);
+                        colHeadersBg.setAttribute('width', totalW - rowHeaderWidth);
+                        colHeadersBg.setAttribute('height', headerHeight);
+                        colHeadersBg.setAttribute('class', 'swimlane-col-header-bg');
+                        g.appendChild(colHeadersBg);
+                    }
+
+                    if (rowHeaderWidth > 0) {
+                        const rowHeadersBg = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                        rowHeadersBg.setAttribute('d', `M 0 ${titleHeight} L ${rowHeaderWidth} ${titleHeight} L ${rowHeaderWidth} ${totalH} L 0 ${totalH} Z`);
+                        rowHeadersBg.setAttribute('class', 'swimlane-row-header-bg');
+                        g.appendChild(rowHeadersBg);
+                    }
+
+                    let xOffset = rowHeaderWidth;
+                    cols.forEach((colName, cIndex) => {
+                        const colW = colWidths[cIndex];
+
+                        if (headerHeight > 0) {
+                            const colTxt = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                            colTxt.setAttribute('x', xOffset + colW / 2);
+                            colTxt.setAttribute('y', titleHeight + headerHeight / 2 + 4);
+                            colTxt.setAttribute('class', 'swimlane-col-text');
+                            colTxt.setAttribute('text-anchor', 'middle');
+                            colTxt.textContent = colName.toUpperCase();
+                            g.appendChild(colTxt);
+                        }
+
+                        xOffset += colW;
+
+                        if (cIndex < cols.length - 1) {
+                            const vLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                            vLine.setAttribute('x1', xOffset);
+                            vLine.setAttribute('y1', titleHeight);
+                            vLine.setAttribute('x2', xOffset);
+                            vLine.setAttribute('y2', totalH);
+                            vLine.setAttribute('class', 'swimlane-grid-line');
+                            g.appendChild(vLine);
+                        }
+                    });
+
+                    let yOffset = titleHeight + headerHeight;
+                    rows.forEach((rowName, rIndex) => {
+                        const rowH = rowHeights[rIndex];
+
+                        if (rowHeaderWidth > 0) {
+                            const rowTxt = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                            rowTxt.setAttribute('x', rowHeaderWidth / 2);
+                            rowTxt.setAttribute('y', yOffset + rowH / 2 + 4);
+                            rowTxt.setAttribute('class', 'swimlane-row-text');
+                            rowTxt.setAttribute('text-anchor', 'middle');
+                            rowTxt.textContent = rowName.toUpperCase();
+                            g.appendChild(rowTxt);
+                        }
+
+                        yOffset += rowH;
+
+                        if (rIndex < rows.length - 1) {
+                            const hLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                            hLine.setAttribute('x1', 0);
+                            hLine.setAttribute('y1', yOffset);
+                            hLine.setAttribute('x2', totalW);
+                            hLine.setAttribute('y2', yOffset);
+                            hLine.setAttribute('class', 'swimlane-grid-line');
+                            g.appendChild(hLine);
+                        }
+                    });
+
+                    if (headerHeight > 0) {
+                        const mainHLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                        mainHLine.setAttribute('x1', 0);
+                        mainHLine.setAttribute('y1', titleHeight + headerHeight);
+                        mainHLine.setAttribute('x2', totalW);
+                        mainHLine.setAttribute('y2', titleHeight + headerHeight);
+                        mainHLine.setAttribute('class', 'swimlane-border-line');
+                        g.appendChild(mainHLine);
+                    }
+
+                    if (rowHeaderWidth > 0) {
+                        const mainVLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                        mainVLine.setAttribute('x1', rowHeaderWidth);
+                        mainVLine.setAttribute('y1', titleHeight);
+                        mainVLine.setAttribute('x2', rowHeaderWidth);
+                        mainVLine.setAttribute('y2', totalH);
+                        mainVLine.setAttribute('class', 'swimlane-border-line');
+                        g.appendChild(mainVLine);
+                    }
+
+                    this.attachNodeEventHandlersLayers(swim, g);
+                    this.dom.layerSwimlanes.appendChild(g);
+                });
+
                 this.dom.layerBoundaries.innerHTML = ''; this.dom.layerBoundaryLinesPaths.innerHTML = '';
                 this.dom.layerFlowsPaths.innerHTML = ''; this.dom.layerFlowsTexts.innerHTML = '';
                 this.dom.layerBoundaryLinesTexts.innerHTML = ''; this.dom.layerNodes.innerHTML = '';
@@ -3370,8 +4824,12 @@
                         }
                     }
 
-                    const startPt = [p1.x, p1.y];
-                    const endPt = [p2.x, p2.y];
+                    const thickness = parseInt(f.thickness || 2);
+                    let arrW = 8 + thickness * 2.5;
+                    if (thickness >= 3) arrW += 1.5;
+
+                    let startPt = [p1.x, p1.y];
+                    let endPt = [p2.x, p2.y];
                     let controlPoints = [];
                     if (f.points && f.points.length > 0) {
                         controlPoints = f.points.map(pt => [pt.x, pt.y]);
@@ -3381,13 +4839,62 @@
                         controlPoints = [[midX + f.bendX, midY + f.bendY]];
                     }
 
+                    // Shorten endPt by arrW to attach to arrowhead base
+                    let p_last = controlPoints.length > 0 ? controlPoints[controlPoints.length - 1] : startPt;
+                    let dx_end = endPt[0] - p_last[0];
+                    let dy_end = endPt[1] - p_last[1];
+                    let dist_end = Math.sqrt(dx_end * dx_end + dy_end * dy_end);
+                    if (dist_end > 0) {
+                        endPt = [endPt[0] - (dx_end / dist_end) * arrW, endPt[1] - (dy_end / dist_end) * arrW];
+                    }
+
+                    // Shorten startPt by arrW if bidirectional
+                    if (f.isBidirectional) {
+                        let p_next = controlPoints.length > 0 ? controlPoints[0] : endPt;
+                        let dx_start = p_next[0] - startPt[0];
+                        let dy_start = p_next[1] - startPt[1];
+                        let dist_start = Math.sqrt(dx_start * dx_start + dy_start * dy_start);
+                        if (dist_start > 0) {
+                            startPt = [startPt[0] + (dx_start / dist_start) * arrW, startPt[1] + (dy_start / dist_start) * arrW];
+                        }
+                    }
+
                     const isSelected = this.state.selectedFlowId === f.id;
-                    const lineColor = f.isDisabled ? '#ced4da' : ((f.secProps && f.secProps.encrypted === 'true') ? '#212529' : '#e63946');
+                    const isDark = (this.canvasTheme === 'dark');
+                    const colorMap = {
+                        blue: isDark ? '#38bdf8' : '#0d6efd',
+                        silver: '#cbd5e1',
+                        purple: '#6f42c1',
+                        pink: '#d63384',
+                        red: isDark ? '#ff6b6b' : '#dc3545',
+                        orange: '#fd7e14',
+                        yellow: '#ffc107',
+                        green: '#198754',
+                        teal: '#20c997',
+                        cyan: '#0dcaf0',
+                        lime: '#84cc16',
+                        emerald: '#10b981',
+                        slate: '#64748b',
+                        brown: '#78350f',
+                        navy: '#1e3a8a',
+                        black: '#000000'
+                    };
+                    const customColorHex = colorMap[f.color] || (isDark ? '#ff6b6b' : '#e63946');
+                    const lineColor = f.isDisabled ? '#ced4da' : ((f.secProps && f.secProps.encrypted === 'true') ? '#212529' : customColorHex);
+
+                    let markerColor = lineColor;
+                    if (isSelected) {
+                        markerColor = isDark ? '#38bdf8' : '#0d6efd';
+                    }
+
+                    const { markerId, reverseMarkerId } = this.ensureColorMarkerExists(markerColor, thickness);
+                    const markerEndId = markerId;
+                    const markerStartId = reverseMarkerId;
 
                     let pathD = `M ${startPt[0]} ${startPt[1]}`;
                     if (controlPoints.length === 0) {
                         pathD += ` L ${endPt[0]} ${endPt[1]}`;
-                    } else if (f.curveStyle === 'sharp') {
+                    } else if ((f.curveStyle || (this.isIsometric ? 'sharp' : 'smooth')) === 'sharp') {
                         controlPoints.forEach(pt => {
                             pathD += ` L ${pt[0]} ${pt[1]}`;
                         });
@@ -3414,10 +4921,11 @@
                     const gLine = document.createElementNS('http://www.w3.org/2000/svg', 'g');
                     const line = document.createElementNS('http://www.w3.org/2000/svg', 'path');
                     line.setAttribute('d', pathD);
-                    line.setAttribute('class', `flow-line ${(f.secProps && f.secProps.encrypted === 'true') ? 'encrypted' : ''} ${f.isDisabled ? 'disabled' : ''}`); line.setAttribute('stroke', isSelected ? (f.isDisabled ? '#adb5bd' : '#0d6efd') : lineColor);
-                    line.setAttribute('stroke-width', isSelected ? '4' : '2');
-                    line.setAttribute('marker-end', isSelected ? (f.isDisabled ? 'url(#arrowhead-gray)' : 'url(#arrowhead-selected)') : (f.isDisabled ? 'url(#arrowhead-gray)' : ((f.secProps && f.secProps.encrypted === 'true') ? 'url(#arrowhead-black)' : 'url(#arrowhead-red)')));
-                    if (f.isBidirectional) line.setAttribute('marker-start', isSelected ? (f.isDisabled ? 'url(#arrowhead-gray-reverse)' : 'url(#arrowhead-selected-reverse)') : (f.isDisabled ? 'url(#arrowhead-gray-reverse)' : ((f.secProps && f.secProps.encrypted === 'true') ? 'url(#arrowhead-black-reverse)' : 'url(#arrowhead-red-reverse)')));
+                    line.setAttribute('class', `flow-line ${(f.secProps && f.secProps.encrypted === 'true') ? 'encrypted' : ''} ${f.isDisabled ? 'disabled' : ''}`);
+                    line.setAttribute('stroke', isSelected ? (f.isDisabled ? '#adb5bd' : (isDark ? '#38bdf8' : '#0d6efd')) : lineColor);
+                    line.setAttribute('stroke-width', isSelected ? thickness + 2 : thickness);
+                    line.setAttribute('marker-end', `url(#${markerEndId})`);
+                    if (f.isBidirectional) line.setAttribute('marker-start', `url(#${markerStartId})`);
                     if (f.isDashed) line.setAttribute('stroke-dasharray', '6,4');
                     gLine.appendChild(line);
 
@@ -3481,8 +4989,8 @@
                         if (isSel) {
                             ev.stopPropagation();
                             const canvasSpaceCoords = this.convertClientScreenCoordinatesToCanvasSpace(ev.clientX, ev.clientY);
-                            const clickX = Math.round(canvasSpaceCoords.x / 10) * 10;
-                            const clickY = Math.round(canvasSpaceCoords.y / 10) * 10;
+                            const clickX = this.snapValue(canvasSpaceCoords.x);
+                            const clickY = this.snapValue(canvasSpaceCoords.y);
 
                             const sPt = [p1.x, p1.y];
                             const ePt = [p2.x, p2.y];
@@ -3508,7 +5016,7 @@
                             if (f.points.length === 0 && ((f.bendX || 0) !== 0 || (f.bendY || 0) !== 0)) {
                                 const midX = (p1.x + p2.x) / 2;
                                 const midY = (p1.y + p2.y) / 2;
-                                f.points = [{ x: Math.round((midX + f.bendX) / 10) * 10, y: Math.round((midY + f.bendY) / 10) * 10 }];
+                                f.points = [{ x: this.snapValue(midX + f.bendX), y: this.snapValue(midY + f.bendY) }];
                                 const pts2 = [sPt, [f.points[0].x, f.points[0].y], ePt];
                                 minDistance = Infinity;
                                 for (let i = 0; i < pts2.length - 1; i++) {
@@ -3542,6 +5050,7 @@
                     let textX = textPos.x;
                     let textY = textPos.y;
                     const hasPorts = (f.ports && f.ports.trim() !== '');
+                    const showBadge = (f.name && f.name.trim() !== '') || hasPorts;
                     const isAuthActive = (f.secProps && f.secProps.authenticated === 'true');
                     const hasThreats = this.state.threats.some(t => t.elementId === f.id);
 
@@ -3573,12 +5082,19 @@
                     let portTextClass = f.isDisabled ? 'text-muted' : (hasThreats ? 'text-white-50' : 'text-muted');
                     let badgeClass = f.isDisabled ? 'border rounded shadow-sm d-inline-block flow-badge-disabled' : `${hasThreats ? 'bg-danger' : 'bg-white'} border rounded shadow-sm d-inline-block`;
 
-                    foLabel.innerHTML = `
-                        <div xmlns="http://www.w3.org/1999/xhtml" class="text-center" style="overflow: visible; width: 100%;">
+                    let badgeHtml = '';
+                    if (showBadge) {
+                        badgeHtml = `
                             <div class="${badgeClass}" style="font-size: 10px; line-height: 1.1; border-color: ${labelBorderColor} !important; border-width: ${isSelected ? '2px' : '1px'} !important; user-select: none; padding: 1px 3px; max-width: 100%;">
-                                <div class="fw-bold text-truncate ${labelTextClass}" style="max-width: 150px; padding: 0 !important; margin: 0 !important;">${f.name}</div>
+                                <div class="fw-bold text-truncate ${labelTextClass}" style="max-width: 150px; padding: 0 !important; margin: 0 !important;">${f.name || ''}</div>
                                 ${hasPorts ? `<div class="${portTextClass} extra-small" style="font-size: 9px; font-weight: 500; margin-top: 1px;">Port: ${f.ports.trim()}</div>` : ''}
                             </div>
+                        `;
+                    }
+
+                    foLabel.innerHTML = `
+                        <div xmlns="http://www.w3.org/1999/xhtml" class="text-center" style="overflow: visible; width: 100%;">
+                            ${badgeHtml}
                             ${isAuthActive ? `<div class="d-flex justify-content-center align-items-center mt-1" style="height: 16px; overflow: visible; ${f.isDisabled ? 'opacity: 0.4;' : ''}"><i class="bi bi-shield-fill-check ${f.isDisabled ? 'text-secondary' : 'text-primary'}" style="font-size: 15px;" title="Authenticated Stream"></i></div>` : ''}
                         </div>
                     `;
@@ -3587,69 +5103,115 @@
                     this.dom.layerFlowsTexts.appendChild(gText);
                 });
 
-                this.state.elements.filter(e => e.type !== 'boundary' && e.type !== 'boundary_line').forEach(node => {
+                this.state.elements.filter(e => e.type !== 'boundary' && e.type !== 'boundary_line' && e.type !== 'swimlane').forEach(node => {
                     const isSelected = this.state.selectedElementIds.includes(node.id);
                     const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
                     g.setAttribute('class', `node-element ${isSelected ? 'selected' : ''} ${node.isDisabled ? 'disabled' : ''}`);
-                    g.setAttribute('data-id', node.id); g.setAttribute('transform', `translate(${node.x}, ${node.y})`);
+                    g.setAttribute('data-id', node.id);
+                    let transformStr = `translate(${node.x}, ${node.y})`;
+                    if (this.isIsometric && node.disableIso && ['headline', 'textbox', 'custom_image', 'step_activity'].includes(node.type)) {
+                        if (this.viewMode === 'ne-isometric') {
+                            transformStr += ' matrix(0.57735027, -0.57735027, 1.0, 1.0, 0, 0)';
+                        } else if (this.viewMode === 'nw-isometric') {
+                            transformStr += ' matrix(0.57735027, 0.57735027, -1.0, 1.0, 0, 0)';
+                        }
+                    }
+                    g.setAttribute('transform', transformStr);
 
-                    const w = node.width || 240; const h = node.height || 80;
-                    const foreignObj = document.createElementNS('http://www.w3.org/2000/svg', 'foreignObject');
-                    foreignObj.setAttribute('width', w); foreignObj.setAttribute('height', h);
-                    foreignObj.setAttribute('style', 'overflow: visible;');
+                    const w = node.width || (node.type === 'custom_image' ? 120 : 240); const h = node.height || (node.type === 'custom_image' ? 120 : 80);
+                    if (node.type === 'custom_image') {
+                        const img = document.createElementNS('http://www.w3.org/2000/svg', 'image');
+                        const defaultPlaceholderUrl = "data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23f1f3f5'/%3E%3Crect x='15' y='15' width='70' height='70' rx='5' fill='none' stroke='%23adb5bd' stroke-width='3'/%3E%3Ccircle cx='35' cy='35' r='8' fill='%23adb5bd'/%3E%3Cpolygon points='20,75 45,45 65,65 80,50 80,75' fill='%23adb5bd'/%3E%3C/svg%3E";
+                        img.setAttributeNS('http://www.w3.org/1999/xlink', 'href', node.imageUrl || defaultPlaceholderUrl);
+                        img.setAttribute('x', '0');
+                        img.setAttribute('y', '0');
+                        img.setAttribute('width', w);
+                        img.setAttribute('height', h);
+                        img.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+                        g.appendChild(img);
 
-                    let cardClass = "card-process"; let stripeClass = "process-stripe";
-                    if (node.type === 'datastore') { cardClass = "card-datastore"; stripeClass = "datastore-stripe"; }
-                    else if (node.type === 'interactor') { cardClass = (node.secProps && node.secProps.isPrivilegedUser === 'true') ? "card-interactor-privileged" : "card-interactor"; stripeClass = (node.secProps && node.secProps.isPrivilegedUser === 'true') ? "interactor-privileged-stripe" : "interactor-stripe"; }
-                    else if (node.type === 'infrastructure') { cardClass = "card-infrastructure"; stripeClass = "infrastructure-stripe"; }
-                    else if (node.type === 'textbox') cardClass = "card-textbox";
-                    else if (node.type === 'headline') cardClass = "card-headline";
+                        if (isSelected) {
+                            const outline = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                            outline.setAttribute('x', '0');
+                            outline.setAttribute('y', '0');
+                            outline.setAttribute('width', w);
+                            outline.setAttribute('height', h);
+                            outline.setAttribute('fill', 'none');
+                            outline.setAttribute('class', 'node-shape-rect');
+                            outline.setAttribute('rx', '4');
+                            outline.setAttribute('ry', '4');
+                            g.appendChild(outline);
+                        }
 
-                    const disabledClass = node.isDisabled ? 'disabled' : '';
-
-                    if (node.type === 'textbox') {
-                        foreignObj.innerHTML = `<div xmlns="http://www.w3.org/1999/xhtml" class="canvas-card ${cardClass} p-2 d-flex"><div class="small text-secondary card-text-render-target text-wrap overflow-hidden w-100 h-100" style="font-family: monospace; font-size:11px; line-height:1.2;">${node.name}</div></div>`;
-                    } else if (node.type === 'headline') {
-                        const styleMode = node.orientation === 'vertical' ? 'writing-mode: vertical-lr; text-orientation: mixed;' : 'writing-mode: horizontal-tb;';
-                        foreignObj.innerHTML = `<div xmlns="http://www.w3.org/1999/xhtml" class="canvas-card ${cardClass} p-1 d-flex" style="${styleMode}"><div class="fw-bold text-dark card-text-render-target text-wrap overflow-hidden w-100 h-100" style="font-size: ${node.fontSize || 24}px; line-height:1.1;">${node.name}</div></div>`;
-                    } else if (node.type === 'step_activity') {
-                        const colorMap = {
-                            blue: '#0d6efd', silver: '#cbd5e1', purple: '#6f42c1', pink: '#d63384',
-                            red: '#dc3545', orange: '#fd7e14', yellow: '#ffc107', green: '#198754',
-                            teal: '#20c997', cyan: '#0dcaf0', lime: '#84cc16', emerald: '#10b981',
-                            slate: '#64748b', brown: '#78350f', navy: '#1e3a8a', black: '#212529'
-                        };
-                        foreignObj.innerHTML = `
-                            <div xmlns="http://www.w3.org/1999/xhtml" class="d-flex align-items-center bg-white p-2 w-100 h-100 overflow-hidden canvas-card ${isSelected ? 'selected' : ''}" style="border: 2px solid #6c757d; border-radius: 6px;">
-                                <div class="d-flex align-items-center justify-content-center rounded-circle flex-shrink-0 fw-bold text-white me-2" style="background-color: ${colorMap[node.circleColor || 'blue'] || '#0d6efd'}; width: 32px; height: 32px; font-size: 13px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.15);">${node.stepNumber || 1}</div>
-                                <div class="small text-dark text-wrap overflow-hidden card-text-render-target flex-grow-1 fw-medium" style="font-size: 11px; line-height: 1.25;">${node.name}</div>
-                            </div>`;
-                    } else if (node.type === 'infrastructure') {
-                        const colorMap = {
-                            blue: '#0d6efd', silver: '#cbd5e1', purple: '#6f42c1', pink: '#d63384',
-                            red: '#dc3545', orange: '#fd7e14', yellow: '#ffc107', green: '#198754',
-                            teal: '#20c997', cyan: '#0dcaf0', lime: '#84cc16', emerald: '#10b981',
-                            slate: '#64748b', brown: '#78350f', navy: '#1e3a8a', black: '#212529'
-                        };
-                        const iconColor = colorMap[node.iconColor] || node.iconColor || '#0dcaf0';
-                        const disabledColor = node.isDisabled ? '#ced4da' : iconColor;
-                        const labelColor = node.isDisabled ? '#6c757d' : '#212529';
-                        foreignObj.innerHTML = `
-                            <div xmlns="http://www.w3.org/1999/xhtml" class="canvas-card card-infrastructure-borderless ${disabledClass}">
-                                <i class="bi ${node.icon || 'bi-server'}" style="font-size: 36px; color: ${disabledColor} !important; line-height: 1;"></i>
-                                <div class="fw-bold card-text-render-target text-truncate text-center w-100 px-2 mt-1" style="font-size: 11px; color: ${labelColor}; line-height: 1.2;">${node.name}</div>
-                            </div>`;
+                        const txt = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                        txt.setAttribute('x', w / 2);
+                        txt.setAttribute('y', h + 15);
+                        txt.setAttribute('text-anchor', 'middle');
+                        txt.setAttribute('font-size', '11px');
+                        txt.setAttribute('font-weight', 'bold');
+                        txt.setAttribute('fill', node.isDisabled ? '#6c757d' : '#212529');
+                        txt.setAttribute('class', 'card-text-render-target');
+                        txt.textContent = node.name;
+                        g.appendChild(txt);
                     } else {
-                        foreignObj.innerHTML = `
-                            <div xmlns="http://www.w3.org/1999/xhtml" class="canvas-card ${cardClass} ${disabledClass}">
-                                <div class="card-icon-stripe ${stripeClass}"><i class="bi ${node.icon || 'bi-server'}"></i></div>
-                                <div class="card-main-body">
-                                    <div class="fw-bold text-dark text-truncate small card-text-render-target" style="font-size:12px; line-height:1.1;">${node.name}</div>
-                                    <div class="text-muted text-truncate w-100" style="font-size:10px; font-weight:normal; line-height:1.1; white-space:nowrap;" title="${node.notes || ''}">${node.notes || ''}</div>
-                                    <div class="d-flex gap-1 flex-wrap overflow-hidden mt-1" style="max-height:22px;">${this.generateSecurityStatusBadgesHtml(node)}</div>
-                                </div>
-                            </div>`;
-                    } g.appendChild(foreignObj);
+                        const foreignObj = document.createElementNS('http://www.w3.org/2000/svg', 'foreignObject');
+                        foreignObj.setAttribute('width', w); foreignObj.setAttribute('height', h);
+                        foreignObj.setAttribute('style', 'overflow: visible;');
+
+                        let cardClass = "card-process"; let stripeClass = "process-stripe";
+                        if (node.type === 'datastore') { cardClass = "card-datastore"; stripeClass = "datastore-stripe"; }
+                        else if (node.type === 'interactor') { cardClass = (node.secProps && node.secProps.isPrivilegedUser === 'true') ? "card-interactor-privileged" : "card-interactor"; stripeClass = (node.secProps && node.secProps.isPrivilegedUser === 'true') ? "interactor-privileged-stripe" : "interactor-stripe"; }
+                        else if (node.type === 'infrastructure') { cardClass = "card-infrastructure"; stripeClass = "infrastructure-stripe"; }
+                        else if (node.type === 'textbox') cardClass = "card-textbox";
+                        else if (node.type === 'headline') cardClass = "card-headline";
+
+                        const disabledClass = node.isDisabled ? 'disabled' : '';
+
+                        if (node.type === 'textbox') {
+                            foreignObj.innerHTML = `<div xmlns="http://www.w3.org/1999/xhtml" class="canvas-card ${cardClass} p-2 d-flex"><div class="small text-secondary card-text-render-target text-wrap overflow-hidden w-100 h-100" style="font-family: monospace; font-size:11px; line-height:1.2;">${node.name}</div></div>`;
+                        } else if (node.type === 'headline') {
+                            const styleMode = node.orientation === 'vertical' ? 'writing-mode: vertical-lr; text-orientation: mixed;' : 'writing-mode: horizontal-tb;';
+                            foreignObj.innerHTML = `<div xmlns="http://www.w3.org/1999/xhtml" class="canvas-card ${cardClass} p-1 d-flex" style="${styleMode}"><div class="fw-bold text-dark card-text-render-target text-wrap overflow-hidden w-100 h-100" style="font-size: ${node.fontSize || 24}px; line-height:1.1;">${node.name}</div></div>`;
+                        } else if (node.type === 'step_activity') {
+                            const colorMap = {
+                                blue: '#0d6efd', silver: '#cbd5e1', purple: '#6f42c1', pink: '#d63384',
+                                red: '#dc3545', orange: '#fd7e14', yellow: '#ffc107', green: '#198754',
+                                teal: '#20c997', cyan: '#0dcaf0', lime: '#84cc16', emerald: '#10b981',
+                                slate: '#64748b', brown: '#78350f', navy: '#1e3a8a', black: '#212529'
+                            };
+                            foreignObj.innerHTML = `
+                                <div xmlns="http://www.w3.org/1999/xhtml" class="d-flex align-items-center bg-white p-2 w-100 h-100 overflow-hidden canvas-card ${isSelected ? 'selected' : ''}" style="border: 2px solid #6c757d; border-radius: 6px;">
+                                    <div class="d-flex align-items-center justify-content-center rounded-circle flex-shrink-0 fw-bold text-white me-2" style="background-color: ${colorMap[node.circleColor || 'blue'] || '#0d6efd'}; width: 32px; height: 32px; font-size: 13px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.15);">${node.stepNumber || 1}</div>
+                                    <div class="small text-dark text-wrap overflow-hidden card-text-render-target flex-grow-1 fw-medium" style="font-size: 11px; line-height: 1.25;">${node.name}</div>
+                                </div>`;
+                        } else if (node.type === 'infrastructure') {
+                            const colorMap = {
+                                blue: '#0d6efd', silver: '#cbd5e1', purple: '#6f42c1', pink: '#d63384',
+                                red: '#dc3545', orange: '#fd7e14', yellow: '#ffc107', green: '#198754',
+                                teal: '#20c997', cyan: '#0dcaf0', lime: '#84cc16', emerald: '#10b981',
+                                slate: '#64748b', brown: '#78350f', navy: '#1e3a8a', black: '#212529'
+                            };
+                            const iconColor = colorMap[node.iconColor] || node.iconColor || '#0dcaf0';
+                            const disabledColor = node.isDisabled ? '#ced4da' : iconColor;
+                            const labelColor = node.isDisabled ? '#6c757d' : '#212529';
+                            foreignObj.innerHTML = `
+                                <div xmlns="http://www.w3.org/1999/xhtml" class="canvas-card card-infrastructure-borderless ${disabledClass}">
+                                    <i class="bi ${node.icon || 'bi-server'}" style="font-size: 36px; color: ${disabledColor} !important; line-height: 1;"></i>
+                                    <div class="fw-bold card-text-render-target text-truncate text-center w-100 px-2 mt-1" style="font-size: 11px; color: ${labelColor}; line-height: 1.2;">${node.name}</div>
+                                </div>`;
+                        } else {
+                            foreignObj.innerHTML = `
+                                <div xmlns="http://www.w3.org/1999/xhtml" class="canvas-card ${cardClass} ${disabledClass}">
+                                    <div class="card-icon-stripe ${stripeClass}"><i class="bi ${node.icon || 'bi-server'}"></i></div>
+                                    <div class="card-main-body">
+                                        <div class="fw-bold text-dark text-truncate small card-text-render-target" style="font-size:12px; line-height:1.1;">${node.name}</div>
+                                        <div class="text-muted text-truncate w-100" style="font-size:10px; font-weight:normal; line-height:1.1; white-space:nowrap;" title="${node.notes || ''}">${node.notes || ''}</div>
+                                        <div class="d-flex gap-1 flex-wrap overflow-hidden mt-1" style="max-height:22px;">${this.generateSecurityStatusBadgesHtml(node)}</div>
+                                    </div>
+                                </div>`;
+                        }
+                        g.appendChild(foreignObj);
+                    }
 
                     if (node.secProps && node.secProps.isCrownJewel === 'true') {
                         const crownBadgeG = document.createElementNS('http://www.w3.org/2000/svg', 'g');
@@ -3670,7 +5232,7 @@
                         const bugFO = document.createElementNS('http://www.w3.org/2000/svg', 'foreignObject');
                         bugFO.setAttribute('width', '40'); bugFO.setAttribute('height', '40');
                         bugFO.setAttribute('x', '-20'); bugFO.setAttribute('y', '-20');
-                        bugFO.innerHTML = `<div xmlns="http://www.w3.org/1999/xhtml" class="badge rounded-circle bg-danger border border-white text-white d-flex align-items-center justify-content-center shadow-lg" style="width:32px; height:32px; cursor:help;"><i class="bi bi-bug-fill" style="font-size:16px;"></i></div>`;
+                        bugFO.innerHTML = `<div xmlns="http://www.w3.org/1999/xhtml" class="badge rounded-circle bg-danger threat-bug-badge border border-white text-white d-flex align-items-center justify-content-center shadow-lg" style="width:32px; height:32px; cursor:help;"><i class="bi bi-bug-fill" style="font-size:16px;"></i></div>`;
 
                         const innerBugDiv = bugFO.querySelector('div');
                         innerBugDiv.addEventListener('mouseenter', (ev) => {
@@ -3699,7 +5261,7 @@
                         bugG.appendChild(bugFO); g.appendChild(bugG);
                     }
 
-                    if (!['textbox', 'headline', 'step_activity'].includes(node.type)) {
+                    if (!['textbox', 'headline', 'step_activity', 'swimlane'].includes(node.type)) {
                         let forceShowAnchors = false;
                         if ((this.isDrawingPhantomWire || this.activeFlowDragMode === 'flow_source' || this.activeFlowDragMode === 'flow_target') && this.currentMouseCanvasCoords) {
                             const nodeCenter = { x: node.x + w / 2, y: node.y + h / 2 };
@@ -3767,14 +5329,26 @@
                     if (this.isDrawingPhantomWire || this.resizingElementId || ev.button !== 0 || this.activeFlowDragMode) return;
                     ev.stopPropagation();
                     if (!this.state.selectedElementIds.includes(elementObj.id)) {
+                        this.state.selectedFlowId = null;
                         this.state.selectedElementIds = [elementObj.id];
                         this.dom.svg.querySelectorAll('.node-element').forEach(el => el.classList.remove('selected'));
                         gElement.classList.add('selected');
-                        this.updatePropertiesInspectorView(); this.updateThreatSuggestionsWizardView();
+                        this.refreshAppViewVisualWorkspace();
                     }
                     this.isDraggingElements = true;
                     this.dragStartCanvasCoords = this.convertClientScreenCoordinatesToCanvasSpace(ev.clientX, ev.clientY);
-                    this.initialDragPositions = this.state.selectedElementIds.map(id => {
+
+                    const dragIds = new Set(this.state.selectedElementIds);
+                    this.state.selectedElementIds.forEach(id => {
+                        const matched = this.state.elements.find(el => el.id === id);
+                        if (matched && matched.type === 'swimlane' && matched.cellAssignments) {
+                            matched.cellAssignments.forEach(assign => {
+                                dragIds.add(assign.id);
+                            });
+                        }
+                    });
+
+                    this.initialDragPositions = Array.from(dragIds).map(id => {
                         const matched = this.state.elements.find(el => el.id === id); return { id, x: matched.x, y: matched.y };
                     });
                 });
@@ -3784,7 +5358,7 @@
             }
 
             updatePropertiesInspectorView() {
-                const boxIds = ['box-props-standard-name', 'box-props-status-state', 'box-props-icon-customization', 'box-props-flow-routing', 'box-props-step-activity', 'box-props-text-offset', 'box-props-textbox-textarea', 'box-props-headline-customization', 'box-props-security', 'box-props-zdepth'];
+                const boxIds = ['box-props-standard-name', 'box-props-status-state', 'box-props-icon-customization', 'box-props-flow-routing', 'box-props-step-activity', 'box-props-text-offset', 'box-props-textbox-textarea', 'box-props-headline-customization', 'box-props-security', 'box-props-zdepth', 'box-props-custom-image', 'box-props-isometric-toggle', 'box-props-swimlane'];
                 boxIds.forEach(id => { const el = document.getElementById(id); if (el) el.classList.add('d-none'); });
 
                 const count = this.state.selectedElementIds.length;
@@ -3800,7 +5374,24 @@
 
                 document.getElementById('box-props-zdepth').classList.remove('d-none');
 
-                document.getElementById('props-element-type-lbl').innerText = targetItem.type ? targetItem.type.toUpperCase() : 'COMMUNICATION STREAM';
+                if (['textbox', 'headline', 'custom_image', 'step_activity'].includes(targetItem.type)) {
+                    document.getElementById('box-props-isometric-toggle').classList.remove('d-none');
+                    document.getElementById('props-input-disable-iso').checked = !!targetItem.disableIso;
+                }
+
+                this.renderAssociatedThreats(targetItem);
+
+                let displayType = targetItem.type ? targetItem.type.replace(/_/g, ' ').toUpperCase() : 'COMMUNICATION STREAM';
+                document.getElementById('props-element-type-lbl').innerText = displayType;
+
+                if (targetItem.type === 'swimlane') {
+                    document.getElementById('box-props-standard-name').classList.remove('d-none');
+                    document.getElementById('box-props-swimlane').classList.remove('d-none');
+                    document.getElementById('props-input-name').value = targetItem.name;
+                    document.getElementById('props-input-notes').value = targetItem.notes || '';
+                    this.renderSwimlanePropertiesInspectorControls(targetItem);
+                    return;
+                }
 
                 if (targetItem.type === 'boundary_line') {
                     document.getElementById('box-props-standard-name').classList.remove('d-none');
@@ -3842,6 +5433,16 @@
                     return;
                 }
 
+                if (targetItem.type === 'custom_image') {
+                    document.getElementById('box-props-standard-name').classList.remove('d-none');
+                    document.getElementById('box-props-custom-image').classList.remove('d-none');
+                    document.getElementById('props-input-name').value = targetItem.name;
+                    document.getElementById('props-input-notes').value = targetItem.notes || '';
+                    document.getElementById('props-input-image-url').value = targetItem.imageUrl || '';
+                    document.getElementById('props-input-image-file').value = '';
+                    return;
+                }
+
                 document.getElementById('box-props-standard-name').classList.remove('d-none');
                 document.getElementById('props-input-name').value = targetItem.name;
                 document.getElementById('props-input-notes').value = targetItem.notes || '';
@@ -3849,13 +5450,11 @@
                 if (!targetItem.type) {
                     document.getElementById('box-props-flow-routing').classList.remove('d-none');
                     document.getElementById('box-props-text-offset').classList.remove('d-none');
-                    document.getElementById('box-props-status-state').classList.remove('d-none');
-                    document.getElementById('props-input-disabled').checked = !!targetItem.isDisabled;
                     const srcSel = document.getElementById('props-flow-src-select');
                     const dstSel = document.getElementById('props-flow-dst-select');
                     srcSel.innerHTML = ''; dstSel.innerHTML = '';
                     this.state.elements.forEach(el => {
-                        if (['boundary', 'textbox', 'headline', 'boundary_line', 'step_activity'].includes(el.type)) return;
+                        if (['boundary', 'textbox', 'headline', 'boundary_line', 'step_activity', 'swimlane'].includes(el.type)) return;
                         srcSel.innerHTML += `<option value="${el.id}">${el.name}</option>`;
                         dstSel.innerHTML += `<option value="${el.id}">${el.name}</option>`;
                     });
@@ -3865,9 +5464,22 @@
                     document.getElementById('props-flow-dashed-switch').checked = !!targetItem.isDashed;
                     const curveStyleSelect = document.getElementById('props-flow-curve-select');
                     if (curveStyleSelect) {
-                        curveStyleSelect.value = targetItem.curveStyle || 'smooth';
+                        curveStyleSelect.value = targetItem.curveStyle || (this.isIsometric ? 'sharp' : 'smooth');
                     }
                     document.getElementById('props-input-text-offset').value = targetItem.textOffset || 0.5;
+
+                    const thicknessSelect = document.getElementById('props-flow-thickness-select');
+                    if (thicknessSelect) {
+                        thicknessSelect.value = targetItem.thickness || 2;
+                    }
+                    const activeColor = targetItem.color || 'red';
+                    document.querySelectorAll('#props-flow-color-grid .color-swatch-btn').forEach(btn => {
+                        if (btn.getAttribute('data-color') === activeColor) {
+                            btn.classList.add('active');
+                        } else {
+                            btn.classList.remove('active');
+                        }
+                    });
 
                     this.renderSecurityPropsControls(targetItem);
                     return;
@@ -4090,7 +5702,7 @@
                 const secBox = document.getElementById('box-props-security');
                 if (secBox) secBox.classList.add('d-none');
 
-                if (!targetItem.secProps || targetItem.type === 'infrastructure') return;
+                if (!targetItem.secProps || targetItem.type === 'infrastructure' || !targetItem.type) return;
 
                 const labelsGlossary = {
                     unauthAccess: "Unauthenticated Access Allowed", isPrivilegedUser: "Is Privileged User Context", runAsAdmin: "Runs with High System Privileges",
@@ -4126,96 +5738,121 @@
                 }
             }
 
+            renderAssociatedThreats(targetItem) {
+                const threatsContainer = document.getElementById('props-threats-container');
+                const boxThreats = document.getElementById('box-props-threats');
+                if (!threatsContainer || !boxThreats) return;
+
+                boxThreats.classList.add('d-none');
+
+                const canHaveThreats = ['process', 'datastore', 'interactor', 'infrastructure', 'custom_image'].includes(targetItem.type) || !targetItem.type;
+                if (!canHaveThreats) return;
+
+                const associatedThreats = (this.state.threats || []).filter(t => t.elementId === targetItem.id);
+
+                threatsContainer.innerHTML = '';
+                boxThreats.classList.remove('d-none');
+
+                if (associatedThreats.length === 0) {
+                    threatsContainer.innerHTML = '<div class="text-muted extra-small text-center py-2">No associated threats.</div>';
+                    return;
+                }
+
+                associatedThreats.forEach(t => {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'd-flex flex-column p-2 mb-2 bg-white border rounded shadow-sm';
+
+                    const score = parseInt(t.likelihood || 3) * parseInt(t.impact || 3);
+                    const calc = ThreatModelSession.calculateRisk(t.likelihood, t.impact);
+
+                    itemDiv.innerHTML = `
+                        <div class="d-flex justify-content-between align-items-start mb-1">
+                            <span class="fw-bold extra-small text-dark text-truncate" style="max-width: 170px;" title="${t.title}">${t.title}</span>
+                            <span class="badge ${calc.badgeClass} extra-small" style="font-size: 9px; padding: 2px 4px;">${calc.label}</span>
+                        </div>
+                        <div class="extra-small text-muted text-truncate mb-2" style="font-size: 10px;">Category: ${t.category}</div>
+                        <div class="d-flex gap-1 justify-content-end border-top pt-1 mt-1">
+                            <button type="button" class="btn btn-xs btn-outline-secondary py-0 px-1 extra-small btn-edit-threat" style="font-size: 10px;" data-id="${t.id}">
+                                <i class="bi bi-pencil-square"></i> Edit
+                            </button>
+                            <button type="button" class="btn btn-xs btn-outline-danger py-0 px-1 extra-small btn-delete-threat" style="font-size: 10px;" data-id="${t.id}">
+                                <i class="bi bi-trash"></i> Remove
+                            </button>
+                        </div>
+                    `;
+
+                    itemDiv.querySelector('.btn-edit-threat').addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        this.openThreatModalForEditing(t.id);
+                    });
+
+                    itemDiv.querySelector('.btn-delete-threat').addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        if (confirm(`Are you sure you want to remove the threat "${t.title}" from this component?`)) {
+                            this.state.threats = this.state.threats.filter(item => item.id !== t.id);
+                            this.logEvent("REMOVE", `Purged vulnerability profile item entry [${t.id}] titled: "${t.title}"`);
+                            this.saveSessionToLocalStorage();
+                            this.refreshAppViewVisualWorkspace();
+                        }
+                    });
+
+                    threatsContainer.appendChild(itemDiv);
+                });
+            }
+
             updateThreatSuggestionsWizardView() {
+                this.showTemplatesMissingAlertIfNeeded();
                 const count = this.state.selectedElementIds.length;
                 let item = count === 1 ? this.state.elements.find(e => e.id === this.state.selectedElementIds[0]) : (this.state.selectedFlowId ? this.state.flows.find(f => f.id === this.state.selectedFlowId) : null);
 
-                if (!item || ['boundary', 'textbox', 'headline', 'boundary_line', 'step_activity'].includes(item.type)) {
+                if (!item || ['boundary', 'textbox', 'headline', 'boundary_line', 'step_activity', 'swimlane'].includes(item.type)) {
                     this.dom.suggestEmpty.classList.remove('d-none'); this.dom.suggestContent.classList.add('d-none'); return;
                 }
                 this.dom.suggestEmpty.classList.add('d-none'); this.dom.suggestContent.classList.remove('d-none');
                 this.dom.lblMatrixElementType.innerText = item.type ? item.type.toUpperCase() : 'COMMUNICATION STREAM';
 
-                let allScenarios = []; let categories = [];
-                if (item.type === 'process') {
+                const typeKey = item.type || 'flow';
+                let categories = [];
+                if (typeKey === 'process' || typeKey === 'custom_image') {
                     categories = ['Spoofing', 'Tampering', 'Repudiation', 'Information Disclosure', 'Denial of Service', 'Elevation of Privilege'];
-                    allScenarios = [
-                        { category: 'Spoofing', title: `Service Identity Mimicry targeting [${item.name}]`, desc: 'Malicious system processes spoof verification profiles or intercept routing instructions streams to inherit valid handshake states.' },
-                        { category: 'Spoofing', title: `Unauthenticated Inter-Process Communication Endpoint Exposure`, desc: 'Deserialized callback pipelines accept unverified local connection loops, allowing adjacent container processes to simulate master commands.' },
-                        { category: 'Spoofing', title: `Server-Side Request Forgery (SSRF) Loop Proxy Exploitation`, desc: 'Inadequate validation of resource paths parameters allows attackers to coerce the service process into scanning hidden corporate loop infrastructure interfaces.' },
-                        { category: 'Spoofing', title: `DNS Cache Poisoning & Routing Redirection`, desc: 'Lack of secure DNS resolution constraints allows local infrastructure daemons to process forged names mappings, routing traffic to adversary pods.' },
-                        { category: 'Tampering', title: `Runtime Memory Manipulation and Assembly Injection`, desc: 'Absence of strict input validation allows arbitrary command arguments or malicious assembly packages to alter binary runtime execution.' },
-                        { category: 'Tampering', title: `Insecure Local Binaries Subversion and DLL Hijacking`, desc: 'Inadequate write permissions on runtime execution paths enable local actors to replace core dependencies with malicious modules.' },
-                        { category: 'Tampering', title: `Log Forgery and Malicious Command Parameter Injection`, desc: 'Unsanitized user data breaks boundary parsing strings inside shell utilities, executing secondary terminal commands with service rights.' },
-                        { category: 'Tampering', title: `Container Image Mirror Contamination`, desc: 'Outdated build pipelines pulls unverified container layers, embedding malicious backdoors into deployed application environments.' },
-                        { category: 'Repudiation', title: `Insufficient Administrative Security Modification Logs`, desc: 'State mutations and user privileges shifts complete inside process memory loops without appending cryptographically signed audit tracks.' },
-                        { category: 'Repudiation', title: `Log Injection via Unsanitized Downstream Payload Formatting`, desc: 'Process streams forward user inputs directly into internal syslog nodes without tracing sanitization, permitting log erasure or forging.' },
-                        { category: 'Repudiation', title: `Application Core Crash State Suppression`, desc: 'Runtime exception loops fail to dump hardware core logs or emit telemetry markers when unhandled errors terminate process pools.' },
-                        { category: 'Information Disclosure', title: `Verbose Error Stack Trace Serialization Leakage`, desc: 'System exceptions serialize absolute database paths, environmental parameters, and configuration fields straight into response buffers.' },
-                        { category: 'Information Disclosure', title: `Side-Channel Cryptographic Execution Disclosures`, desc: 'Timing deltas in password hashing loops or token validation gates expose secret byte alignments to highly granular network observation tools.' },
-                        { category: 'Information Disclosure', title: `Shared Garbage Collection Memory Leaks Pool`, desc: 'Improper zeroing of processing buffers leaks raw data blocks across distinct multi-tenant sessions running on the same host kernel thread.' },
-                        { category: 'Information Disclosure', title: `Memory Dump Core Inspection Vulnerability`, desc: 'Process handles leave plaintext access tokens or decryption key parameters unencrypted in swap files or runtime heap sectors.' },
-                        { category: 'Denial of Service', title: `Thread Pool Allocation Exhaustion and Starvation Loop`, desc: 'Unconstrained execution parameters or un-throttled payload loops let hostile bursts exhaust compute threads completely, freezing operations.' },
-                        { category: 'Denial of Service', title: `Algorithmic Complexity Exploitation (ReDoS / Hash Collision)`, desc: 'Unbounded regular expressions processing untrusted input choke execution loops, spiking CPU utilization to 100%.' },
-                        { category: 'Denial of Service', title: `Asynchronous Task Queue Flood Lock`, desc: 'Incoming event workers stream unbounded payload quantities without ingestion quotas, saturating runtime memory buffers and forcing termination.' },
-                        { category: 'Elevation of Privilege', title: `Insecure Context Deserialization and Privilege Scale`, desc: 'Processing serialized network requests without strict type validation allows low-privilege sessions to scale permissions frames and spawn root sub-processes.' },
-                        { category: 'Elevation of Privilege', title: `Environment Variable Handshake Subversion via SUID Binaries`, desc: 'Process execution honors manipulated system configuration strings, enabling subprocess elevation to administrative container layer context.' },
-                        { category: 'Elevation of Privilege', title: `Remote Code Execution (RCE) via Upstream Dependency CVEs`, desc: 'Outdated or unvetted packaging modules contained in the compilation toolchain expose downstream microservices to arbitrary runtime hijacking.' }
-                    ];
-                } else if (item.type === 'datastore') {
+                } else if (typeKey === 'datastore') {
                     categories = ['Tampering', 'Repudiation', 'Information Disclosure', 'Denial of Service'];
-                    allScenarios = [
-                        { category: 'Tampering', title: `Unsanitized Injection Bypassing Schema Mapping Checks`, desc: 'Malicious inputs overwrite existing fields or mutate underlying structures to execute unauthorized state changes.' },
-                        { category: 'Tampering', title: `NoSQL Query Argument Injection via Boolean Abuses`, desc: 'Passing object literals instead of scalars bypasses structure definitions, mutating state or truncating indices.' },
-                        { category: 'Tampering', title: `Storage Snapshot Metadata Corruption Attack`, desc: 'Adversaries overwrite unvalidated transaction header fields, corrupting index block pointers to freeze data extraction processes.' },
-                        { category: 'Tampering', title: `SQL Injection via Unvalidated Filter Parameters`, desc: 'Raw text concatenations on complex multi-table queries let external entities subvert programmatic evaluation trees.' },
-                        { category: 'Repudiation', title: `Anonymous Mutation Records Injection`, desc: 'Modifications drop directly into data tables without recording verified identity tokens profiles.' },
-                        { category: 'Repudiation', title: `Absence of Write-Once Immutable Transaction Records Ledger`, desc: 'Audit trails or high-value transactional records lack append-only locks constraints, allowing compromised keys to forge past historical log trails.' },
-                        { category: 'Repudiation', title: `Transactional System Table Clear Down`, desc: 'Administrative access tokens can purge table event logs without invoking out-of-band streaming alerts to security SIEM aggregates.' },
-                        { category: 'Information Disclosure', title: `Mass Database Extraction via Blind Logical Traversal`, desc: 'Deficient column-level validation allows malicious entities to perform full table scans and dump core intellectual property fields.' },
-                        { category: 'Information Disclosure', title: `Plaintext Backup Snapshot Leaks to Multi-Tenant Storage Buckets`, desc: 'Automated database exports write to external unencrypted file sectors, exposing historical indices to parallel multi-tenant read sweeps.' },
-                        { category: 'Information Disclosure', title: `Unencrypted Backup and Core Table Log Leaks`, desc: 'Disposing database snapshots to staging areas without secondary symmetric partition locks exposes entire schemas to unauthorized administrative groups.' },
-                        { category: 'Denial of Service', title: `Storage Locking Starvation via Deadlock Query Insertion`, desc: 'Unbounded long-running queries or malicious read locks saturate connection allocation slots, rendering persistence layers unavailable.' },
-                        { category: 'Denial of Service', title: `Wildcard Query Index Exhaustion and RAM Thrashing`, desc: 'Massive unindexed regular expression operations saturate persistence layer memory allocations, forcing server terminations.' },
-                        { category: 'Denial of Service', title: `Storage Allocation Exhaustion via Unbounded Log Append`, desc: 'Malicious client entities stream massive nested diagnostic inputs, flooding table storage space and halting database engine processes.' }
-                    ];
-                } else if (item.type === 'interactor') {
+                } else if (typeKey === 'interactor') {
                     categories = ['Spoofing', 'Repudiation', 'Information Disclosure'];
-                    allScenarios = [
-                        { category: 'Spoofing', title: `Client Session Hijacking and Cryptographic Claim Forgery`, desc: 'Weak cookie protection parameters or session token generation algorithms allow thread actors to steal active administrative claims.' },
-                        { category: 'Spoofing', title: `Credential Stuffing via Automated Brute-Force Replay Gates`, desc: 'Lack of client-side rate controls or device fingerprinting lets rogue bots masquerade as legitimate client instances using compiled credential lists.' },
-                        { category: 'Spoofing', title: `Man-In-The-Browser Client State Interception`, desc: 'Malware extensions active inside the untrusted client engine intercept raw keystrokes and authentication values prior to transit encryption.' },
-                        { category: 'Spoofing', title: `Session Fixation & Automated Token Replay Abuse`, desc: 'Authentication endpoints failing to recycle identifier states on state upgrade allow malicious observers to pre-seed valid sessions.' },
-                        { category: 'Repudiation', title: `Edge Transaction Repudiation via Missing Signature Verifications`, desc: 'Operational entry vectors post execution data without passing mutual TLS constraints or non-repudiation tokens.' },
-                        { category: 'Repudiation', title: `Client-Side Action Disavowal via Shared Session Identifiers`, desc: 'Multi-user client systems or shared credentials let individual operators deny actions due to a lack of deterministic client audit anchors.' },
-                        { category: 'Information Disclosure', title: `Client-Side Storage Scraping and Local Caching Leakage`, desc: 'Sensitive operational values serialize inside vulnerable plaintext browser caches or unsecured local folder spaces.' },
-                        { category: 'Information Disclosure', title: `Sensitive Operational Tokens Leaked into Web Browser DevTools Logs`, desc: 'Diagnostic console tracing prints internal authentication tokens or infrastructure paths directly into client-side inspectable runtime logs.' },
-                        { category: 'Information Disclosure', title: `Cross-Site Scripting (XSS) Token Extraction Loop`, desc: 'Absence of strict cookie security flags allows injected scripts to parse inner DOM context and exfiltrate identity tokens.' }
-                    ];
-                } else if (item.type === 'infrastructure') {
+                } else if (typeKey === 'infrastructure') {
                     categories = ['Spoofing', 'Tampering', 'Repudiation', 'Information Disclosure', 'Denial of Service', 'Elevation of Privilege'];
-                    allScenarios = [
-                        { category: 'Spoofing', title: `Infrastructure Host Impersonation targeting [${item.name}]`, desc: 'Malicious system hosts spoof media access control (MAC) or hostnames signatures to join corporate domains and bypass local policy.' },
-                        { category: 'Tampering', title: `Firmware and Operating System Configuration Subversion`, desc: 'Unauthorized administrative port access or lack of secure boot controls allows adversaries to manipulate firmware or overwrite local OS configurations.' },
-                        { category: 'Repudiation', title: `Omission of Out-of-Band Audit Log Forwarding`, desc: 'Infrastructure logs and event reports fail to forward securely to a centralized immutable SIEM server, allowing undetected modifications.' },
-                        { category: 'Information Disclosure', title: `Plaintext Storage of Administrative System Configuration Secrets`, desc: 'Infrastructure configs, network maps, and backup secrets reside in cleartext on storage blocks, exposing high-privilege credentials.' },
-                        { category: 'Denial of Service', title: `Hypervisor Resource Saturation and Core Allocation Thrashing`, desc: 'Hypervisor host fails to isolate core CPU or RAM limits, allowing neighbor compute units to exhaust system performance.' },
-                        { category: 'Elevation of Privilege', title: `Remote Kernel Exploitation via Outdated Daemons (RCE)`, desc: 'Vulnerabilities in unpatched kernel processes or administrative daemons enable remote execution, granting full root control.' }
-                    ];
                 } else {
                     categories = ['Tampering', 'Information Disclosure', 'Denial of Service'];
-                    allScenarios = [
-                        { category: 'Tampering', title: `In-Transit Parameter Alteration (Man-in-the-Middle Vector)`, desc: 'Adversaries manipulate intermediate routing parameters to rewrite business logic values inline during transit.' },
-                        { category: 'Tampering', title: `TCP Sequence Guessing and In-Flight Packet Injection`, desc: 'Unauthenticated transit tracks let local routers calculate sequence alignments, injecting forge control blocks into streaming connections.' },
-                        { category: 'Tampering', title: `Routing Protocol BGP Route Poisoning Hijack`, desc: 'Adversaries advertise malicious routing path paths, redirecting secure transit streams across malicious intermediate analysis infrastructure hosts.' },
-                        { category: 'Information Disclosure', title: `Promiscuous Packet Sniffing over Unencrypted Networks`, desc: 'Cleartext protocol communication streams pass credential arrays directly across infrastructure borders to network listeners.' },
-                        { category: 'Information Disclosure', title: `TLS Session Resumption Key Leakage`, desc: 'Reused session parameters expose ephemeral master secrets, allowing retrospective decryption of archived packet streams.' },
-                        { category: 'Information Disclosure', title: `Data Exfiltration via Out-of-Bound DNS Tunneling Streams`, desc: 'Compromised processes mask classified outbound payloads as standard infrastructure namespace resolutions, bypassing deep boundary firewalls.' },
-                        { category: 'Denial of Service', title: `Transit Bandwidth Flood and TCP Window Exhaustion`, desc: 'Hostile endpoints saturate line limits with request bursts, choking downstream gateway proxy capacity.' },
-                        { category: 'Denial of Service', title: `Slowloris Incomplete Handshake Traffic Exhaustion`, desc: 'Hostile senders initiate thousands of HTTP connection tracks but hold lines open by sending headers infinitely slowly, saturating ingress proxy sockets.' },
-                        { category: 'Denial of Service', title: `TLS Renegotiation Exhaustion Attack`, desc: 'Rogue clients trigger continuous asymmetric cryptographic handshake recalculations over single sockets, starving gateway CPU resources.' }
-                    ];
                 }
+
+                // Pool all templates in the library across all keys
+                const allTemplatesInLibrary = [];
+                Object.keys(this.threatSuggestions).forEach(key => {
+                    const list = this.threatSuggestions[key];
+                    if (Array.isArray(list)) {
+                        list.forEach(sc => {
+                            if (!allTemplatesInLibrary.some(existing => existing === sc)) {
+                                allTemplatesInLibrary.push(sc);
+                            }
+                        });
+                    }
+                });
+
+                // Filter pooled templates to only display those that match a category supported by the selected element
+                const matchingScenarios = allTemplatesInLibrary.filter(sc => categories.includes(sc.category));
+
+                const allScenarios = matchingScenarios.map(sc => {
+                    const interpolatedTitle = (sc.title || '').replace('[name]', `[${item.name || ''}]`);
+                    return {
+                        category: sc.category,
+                        title: interpolatedTitle,
+                        originalTitle: sc.title,
+                        desc: sc.desc,
+                        originalObj: sc
+                    };
+                });
 
                 this.dom.applicableBadgesContainer.innerHTML = '';
                 categories.forEach(cat => {
@@ -4234,12 +5871,105 @@
                 const activeScenarios = allScenarios.filter(sc => !this.disabledStrideFilters.has(sc.category));
                 if (activeScenarios.length === 0) { this.dom.threatSuggestionsList.innerHTML = `<div class="text-center text-muted extra-small py-3">All templates filtered out.</div>`; return; }
 
-                activeScenarios.forEach(sc => {
-                    const card = document.createElement('div'); card.className = "card card-body p-2 mb-2 border-start border-3 border-danger small palette-item";
-                    card.innerHTML = `<div class="d-flex justify-content-between align-items-start mb-1"><div class="fw-bold text-dark text-truncate me-2" style="max-width:210px;">${sc.title}</div><span class="badge stride-${sc.category.charAt(0)} extra-small" style="font-size:9px;">${sc.category}</span></div><div class="extra-small text-muted mb-2" style="font-size:11px;">${sc.desc}</div>`;
-                    card.addEventListener('click', () => { this.openThreatModalForTemplate(sc.category, sc.title, item.id, sc.desc); });
-                    this.dom.threatSuggestionsList.appendChild(card);
+                // Grouping & Sorting logic
+                const sortBy = document.getElementById('select-templates-sort') ? document.getElementById('select-templates-sort').value : 'group-category-title';
+                const strideOrder = ['Spoofing', 'Tampering', 'Repudiation', 'Information Disclosure', 'Denial of Service', 'Elevation of Privilege'];
+
+                if (sortBy === 'group-category-title') {
+                    // Group by STRIDE Category, and then by title
+                    const grouped = {};
+                    strideOrder.forEach(cat => {
+                        grouped[cat] = [];
+                    });
+
+                    activeScenarios.forEach(sc => {
+                        if (!grouped[sc.category]) {
+                            grouped[sc.category] = [];
+                        }
+                        grouped[sc.category].push(sc);
+                    });
+
+                    // Sort each group by title
+                    Object.keys(grouped).forEach(cat => {
+                        grouped[cat].sort((a, b) => a.title.localeCompare(b.title));
+                    });
+
+                    // Render grouped
+                    strideOrder.forEach(cat => {
+                        const items = grouped[cat] || [];
+                        if (items.length === 0) return;
+
+                        // Add category header
+                        const header = document.createElement('div');
+                        header.className = 'fw-bold text-uppercase mt-3 mb-2 pb-1 border-bottom d-flex align-items-center gap-2';
+                        header.style.fontSize = '10px';
+                        header.style.color = '#495057';
+                        header.innerHTML = `
+                            <span class="badge stride-${cat.charAt(0)}" style="width: 18px; height: 18px; display: inline-flex; align-items: center; justify-content: center; font-size: 9px; padding: 0;">${cat.charAt(0)}</span>
+                            <span>${cat}</span>
+                            <span class="text-muted extra-small ms-auto">(${items.length})</span>
+                        `;
+                        this.dom.threatSuggestionsList.appendChild(header);
+
+                        items.forEach(sc => {
+                            const card = this.createTemplateCardDOM(sc, item, typeKey);
+                            this.dom.threatSuggestionsList.appendChild(card);
+                        });
+                    });
+                } else {
+                    // Sort list flat
+                    let sortedScenarios = [...activeScenarios];
+                    if (sortBy === 'title-asc') {
+                        sortedScenarios.sort((a, b) => a.title.localeCompare(b.title));
+                    } else if (sortBy === 'title-desc') {
+                        sortedScenarios.sort((a, b) => b.title.localeCompare(a.title));
+                    } else if (sortBy === 'category-asc') {
+                        sortedScenarios.sort((a, b) => {
+                            const catComp = a.category.localeCompare(b.category);
+                            if (catComp !== 0) return catComp;
+                            return a.title.localeCompare(b.title);
+                        });
+                    }
+
+                    sortedScenarios.forEach(sc => {
+                        const card = this.createTemplateCardDOM(sc, item, typeKey);
+                        this.dom.threatSuggestionsList.appendChild(card);
+                    });
+                }
+            }
+
+            createTemplateCardDOM(sc, item, typeKey) {
+                const card = document.createElement('div');
+                card.className = "card card-body p-2 mb-2 border-start border-3 border-danger small palette-item position-relative shadow-sm";
+                card.style.cursor = 'pointer';
+                card.innerHTML = `
+                    <div class="d-flex justify-content-between align-items-start mb-1">
+                        <div class="fw-bold text-dark text-wrap me-2" style="max-width:160px; word-break: break-word; line-height: 1.25;">${sc.title}</div>
+                        <div class="d-flex align-items-center gap-1 flex-shrink-0">
+                            ${sc.originalObj.isUnsaved ? '<span class="badge bg-warning text-dark extra-small" style="font-size:8px;" title="Unsaved changes"><i class="bi bi-exclamation-circle-fill"></i> Unsaved</span>' : ''}
+                            <span class="badge stride-${sc.category.charAt(0)} extra-small" style="font-size:9px;">${sc.category}</span>
+                            <button type="button" class="btn btn-xs p-0 text-muted btn-template-edit" title="Edit Template" style="font-size: 10px; width: 16px; height: 16px; border: none; background: transparent;"><i class="bi bi-pencil"></i></button>
+                            <button type="button" class="btn btn-xs p-0 text-muted btn-template-delete" title="Delete Template" style="font-size: 10px; width: 16px; height: 16px; border: none; background: transparent;"><i class="bi bi-trash"></i></button>
+                        </div>
+                    </div>
+                    <div class="extra-small text-muted mb-0" style="font-size:10.5px; line-height: 1.35;">${sc.desc}</div>
+                `;
+
+                card.querySelector('.btn-template-edit').addEventListener('click', (ev) => {
+                    ev.stopPropagation();
+                    this.openEditTemplateModal(sc.originalObj, typeKey);
                 });
+
+                card.querySelector('.btn-template-delete').addEventListener('click', (ev) => {
+                    ev.stopPropagation();
+                    this.deleteTemplate(sc.originalObj, typeKey);
+                });
+
+                card.addEventListener('click', () => {
+                    this.openThreatModalForTemplate(sc.category, sc.title, item.id, sc.desc);
+                });
+
+                return card;
             }
 
             renderThreatRegisterTableGrid() {
@@ -4335,7 +6065,7 @@
 
             repopulateThreatModalDropdownTargets() {
                 const select = document.getElementById('modal-threat-link-element'); select.innerHTML = '';
-                this.state.elements.forEach(e => { if (!['textbox', 'headline', 'boundary_line', 'step_activity'].includes(e.type)) select.innerHTML += `<option value="${e.id}">[Node] ${e.name}</option>`; });
+                this.state.elements.forEach(e => { if (!['textbox', 'headline', 'boundary_line', 'step_activity', 'swimlane'].includes(e.type)) select.innerHTML += `<option value="${e.id}">[Node] ${e.name}</option>`; });
                 this.state.flows.forEach(f => { select.innerHTML += `<option value="${f.id}">[Flow] ${f.name}</option>`; });
             }
 
@@ -4434,6 +6164,7 @@
             exportWorkspaceJsonPayloadFile() {
                 const blob = new Blob([JSON.stringify(this.state, null, 2)], { type: 'application/json' });
                 const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `STRIDE-Threat-Model-Export.json`; a.click();
+                this.isCanvasUnsaved = false;
             }
 
             triggerWorkspaceJsonImportSelector() {
@@ -4448,16 +6179,304 @@
                         this.assertValidOperatorProfileAuthentication();
 
                         this.logEvent("CONFIGURE", `Successfully loaded external data file. Imported ${this.state.elements.length} design nodes and ${this.state.threats.length} register entries.`);
-                        this.saveSessionToLocalStorage(); this.refreshAppViewVisualWorkspace();
+                        this.saveSessionToLocalStorage();
+                        this.isCanvasUnsaved = false;
+                        this.refreshAppViewVisualWorkspace();
                     };
                     reader.readAsText(file);
                 }); input.click();
             }
 
-            saveSessionToLocalStorage() { localStorage.setItem('stride_workbench_session_manifest_v26', JSON.stringify(this.state)); }
+            resetSession() {
+                if (confirm("Are you sure you want to reset and delete everything? This will clear all components, flows, and threats from the canvas and start a new session.")) {
+                    this.state = new ThreatModelSession();
+                    this.state.activeUser = "";
+                    this.assertValidOperatorProfileAuthentication();
+                    this.setViewMode('flat');
+                    this.canvasTheme = 'light';
+                    localStorage.setItem('canvas_theme', 'light');
+                    this.applyCanvasTheme();
+                    this.clearActiveSelectionPointers();
+                    this.logEvent("CONFIGURE", "Reset workspace. Started a new threat modeling session (canvas cleared).");
+                    this.saveSessionToLocalStorage();
+                    this.isCanvasUnsaved = false;
+                    this.refreshAppViewVisualWorkspace();
+                }
+            }
+
+            saveSessionToLocalStorage() {
+                localStorage.setItem('stride_workbench_session_manifest_v26', JSON.stringify(this.state));
+                this.isCanvasUnsaved = true;
+            }
             loadSessionFromLocalStorage() {
                 const data = localStorage.getItem('stride_workbench_session_manifest_v26');
                 if (data) { this.state = Object.assign(new ThreatModelSession(), JSON.parse(data)); return true; } return false;
+            }
+
+            getDefaultThreatSuggestions() {
+                return {
+                    process: [],
+                    datastore: [],
+                    interactor: [],
+                    infrastructure: [],
+                    flow: []
+                };
+            }
+
+            mergeThreatSuggestions(newData, markAsUnsaved = false) {
+                if (!newData || typeof newData !== 'object') return;
+
+                const types = ['process', 'datastore', 'interactor', 'infrastructure', 'flow'];
+
+                types.forEach(type => {
+                    if (!this.threatSuggestions[type]) {
+                        this.threatSuggestions[type] = [];
+                    }
+
+                    const newItems = newData[type];
+                    if (Array.isArray(newItems)) {
+                        newItems.forEach(newItem => {
+                            if (!newItem || typeof newItem !== 'object') return;
+
+                            const category = newItem.category || '';
+                            const title = newItem.title || '';
+                            const desc = newItem.desc || '';
+                            const isUnsaved = newItem.isUnsaved !== undefined ? newItem.isUnsaved : markAsUnsaved;
+
+                            // Check if duplicate (case-insensitive and trimmed category & title)
+                            const isDuplicate = this.threatSuggestions[type].some(existingItem => {
+                                const existCategory = existingItem.category || '';
+                                const existTitle = existingItem.title || '';
+                                return existCategory.trim().toLowerCase() === category.trim().toLowerCase() &&
+                                    existTitle.trim().toLowerCase() === title.trim().toLowerCase();
+                            });
+
+                            if (!isDuplicate) {
+                                this.threatSuggestions[type].push({
+                                    category: category,
+                                    title: title,
+                                    desc: desc,
+                                    isUnsaved: isUnsaved
+                                });
+                            }
+                        });
+                    }
+                });
+            }
+
+            async loadThreatTemplates() {
+                // First, load from local storage to have the current user templates
+                const stored = localStorage.getItem('stride_workbench_threat_templates');
+                if (stored) {
+                    try {
+                        this.threatSuggestions = JSON.parse(stored);
+                        console.log('Successfully loaded threat templates from local storage');
+                    } catch (e) {
+                        console.error('Error parsing stored templates in local storage', e);
+                        this.threatSuggestions = this.getDefaultThreatSuggestions();
+                    }
+                } else {
+                    this.threatSuggestions = this.getDefaultThreatSuggestions();
+                }
+
+                try {
+                    const response = await fetch('threat_templates.json');
+                    if (response.ok) {
+                        const data = await response.json();
+                        if (data && typeof data === 'object' && ('process' in data || 'datastore' in data)) {
+                            // Merge fetched templates into this.threatSuggestions without marking as unsaved
+                            this.mergeThreatSuggestions(data, false);
+                            this.templatesFileMissing = false;
+                            console.log('Successfully loaded threat templates from threat_templates.json and merged');
+                            localStorage.removeItem('stride_workbench_templates_deleted_unsaved');
+                            this.saveThreatTemplatesToLocalStorage();
+                            this.showTemplatesMissingAlertIfNeeded();
+                            return;
+                        }
+                    }
+                    this.templatesFileMissing = true;
+                } catch (e) {
+                    console.warn('Failed to fetch threat_templates.json. Using local storage or defaults.', e);
+                    this.templatesFileMissing = true;
+                }
+
+                this.showTemplatesMissingAlertIfNeeded();
+            }
+
+            showTemplatesMissingAlertIfNeeded() {
+                const alertEl = document.getElementById('alert-templates-missing');
+                if (alertEl) {
+                    if (this.templatesFileMissing) {
+                        alertEl.classList.remove('d-none');
+                    } else {
+                        alertEl.classList.add('d-none');
+                    }
+                }
+            }
+
+            saveThreatTemplatesToLocalStorage() {
+                localStorage.setItem('stride_workbench_threat_templates', JSON.stringify(this.threatSuggestions));
+            }
+
+            openEditTemplateModal(templateObj, type) {
+                const titleLbl = document.getElementById('modal-template-title-lbl');
+                const titleInput = document.getElementById('modal-template-title');
+                const categoryInput = document.getElementById('modal-template-category');
+                const descInput = document.getElementById('modal-template-desc');
+                const hiddenIndex = document.getElementById('modal-template-hidden-index');
+                const hiddenType = document.getElementById('modal-template-hidden-type');
+
+                hiddenType.value = type;
+
+                if (!templateObj) {
+                    titleLbl.innerHTML = '<i class="bi bi-file-earmark-plus text-warning me-2"></i>Add Threat Template';
+                    titleInput.value = '';
+                    categoryInput.value = 'Spoofing';
+                    descInput.value = '';
+                    hiddenIndex.value = '-1';
+                } else {
+                    titleLbl.innerHTML = '<i class="bi bi-pencil-square text-warning me-2"></i>Edit Threat Template';
+                    titleInput.value = templateObj.title || '';
+                    categoryInput.value = templateObj.category || 'Spoofing';
+                    descInput.value = templateObj.desc || '';
+
+                    let foundType = type;
+                    let index = -1;
+                    for (const tKey of Object.keys(this.threatSuggestions)) {
+                        const idx = this.threatSuggestions[tKey].indexOf(templateObj);
+                        if (idx !== -1) {
+                            foundType = tKey;
+                            index = idx;
+                            break;
+                        }
+                    }
+                    hiddenType.value = foundType;
+                    hiddenIndex.value = index.toString();
+                }
+
+                this.templateModal.show();
+            }
+
+            saveTemplate() {
+                const type = document.getElementById('modal-template-hidden-type').value;
+                const indexStr = document.getElementById('modal-template-hidden-index').value;
+                const index = parseInt(indexStr, 10);
+
+                const title = document.getElementById('modal-template-title').value.trim();
+                const category = document.getElementById('modal-template-category').value;
+                const desc = document.getElementById('modal-template-desc').value.trim();
+
+                if (!title || !desc) {
+                    alert('Please fill out all fields.');
+                    return;
+                }
+
+                if (!this.threatSuggestions[type]) {
+                    this.threatSuggestions[type] = [];
+                }
+
+                const templateObj = { category, title, desc, isUnsaved: true };
+
+                if (index === -1) {
+                    this.threatSuggestions[type].push(templateObj);
+                    this.logEvent("CONFIGURE", `Added new threat template "${title}" for type "${type}"`);
+                } else {
+                    const oldTitle = this.threatSuggestions[type][index].title;
+                    this.threatSuggestions[type][index] = templateObj;
+                    this.logEvent("CONFIGURE", `Updated threat template "${oldTitle}" for type "${type}" to "${title}"`);
+                }
+
+                this.templatesFileMissing = false;
+                this.saveThreatTemplatesToLocalStorage();
+                this.templateModal.hide();
+                this.updateThreatSuggestionsWizardView();
+            }
+
+            deleteTemplate(templateObj, type) {
+                let foundType = type;
+                let index = -1;
+                for (const tKey of Object.keys(this.threatSuggestions)) {
+                    const idx = this.threatSuggestions[tKey].indexOf(templateObj);
+                    if (idx !== -1) {
+                        foundType = tKey;
+                        index = idx;
+                        break;
+                    }
+                }
+                if (index === -1) return;
+
+                if (confirm(`Are you sure you want to delete the template "${templateObj.title}"?`)) {
+                    this.threatSuggestions[foundType].splice(index, 1);
+                    this.logEvent("CONFIGURE", `Deleted threat template "${templateObj.title}" for type "${foundType}"`);
+
+                    // Mark as unsaved deleted
+                    localStorage.setItem('stride_workbench_templates_deleted_unsaved', 'true');
+
+                    this.saveThreatTemplatesToLocalStorage();
+                    this.updateThreatSuggestionsWizardView();
+                }
+            }
+
+            exportThreatTemplatesBackup() {
+                // Clear in-memory unsaved state
+                Object.keys(this.threatSuggestions).forEach(type => {
+                    if (Array.isArray(this.threatSuggestions[type])) {
+                        this.threatSuggestions[type].forEach(t => {
+                            delete t.isUnsaved;
+                        });
+                    }
+                });
+
+                // Clear local storage delete state
+                localStorage.removeItem('stride_workbench_templates_deleted_unsaved');
+                this.saveThreatTemplatesToLocalStorage();
+
+                // Export clean copy without isUnsaved flags
+                const cleanExport = {};
+                Object.keys(this.threatSuggestions).forEach(type => {
+                    cleanExport[type] = this.threatSuggestions[type].map(t => ({
+                        category: t.category,
+                        title: t.title,
+                        desc: t.desc
+                    }));
+                });
+
+                const blob = new Blob([JSON.stringify(cleanExport, null, 2)], { type: 'application/json' });
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(blob);
+                a.download = 'threat_templates.json';
+                a.click();
+                this.logEvent("CONFIGURE", `Exported threat templates backup file.`);
+                this.updateThreatSuggestionsWizardView();
+            }
+
+            triggerThreatTemplatesImport() {
+                const input = document.createElement('input');
+                input.type = 'file';
+                input.accept = '.json';
+                input.addEventListener('change', (e) => {
+                    const file = e.target.files[0];
+                    if (!file) return;
+                    const reader = new FileReader();
+                    reader.onload = (evt) => {
+                        try {
+                            const data = JSON.parse(evt.target.result);
+                            if (data && typeof data === 'object') {
+                                this.mergeThreatSuggestions(data, false);
+                                this.templatesFileMissing = false;
+                                this.saveThreatTemplatesToLocalStorage();
+                                this.logEvent("CONFIGURE", `Successfully loaded and merged external templates backup file.`);
+                                this.updateThreatSuggestionsWizardView();
+                            } else {
+                                alert("Invalid template backup file structure.");
+                            }
+                        } catch (err) {
+                            alert("Failed to parse templates JSON file: " + err.message);
+                        }
+                    };
+                    reader.readAsText(file);
+                });
+                input.click();
             }
         }
 
